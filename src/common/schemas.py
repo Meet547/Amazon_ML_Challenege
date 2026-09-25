@@ -22,6 +22,16 @@ class CandidatePair:
 
 
 @dataclass(frozen=True)
+class CandidateSetPair:
+    """One unique entity pair with all blocking methods that generated it."""
+
+    s1_id: str
+    candidate_id: str
+    candidate_source: CandidateSource
+    block_methods: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class ScoredPair:
     s1_id: str
     candidate_id: str

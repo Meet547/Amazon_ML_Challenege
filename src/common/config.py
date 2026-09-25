@@ -9,6 +9,7 @@ F05_BETA = 0.5
 PHASE1_OUTPUT = "outputs/normalized"
 PHASE1_PROFILE = "outputs/metrics/phase1_profile.json"
 PHASE2_OUTPUT = "outputs/candidates"
+PHASE2_PROFILE = "outputs/metrics/phase2_profile.json"
 PHASE3_OUTPUT = "outputs/scores"
 PHASE4_OUTPUT = "outputs/scores"
 PHASE5_OUTPUT = "outputs/submissions"

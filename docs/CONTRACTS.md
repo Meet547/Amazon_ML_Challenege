@@ -47,7 +47,13 @@ Minimum conceptual fields:
 - s1_id
 - candidate_id
 - candidate_source
-- block_method
+- block_methods (list of one or more blocking method names)
+
+The internal artifact is Parquet with one row per unique `(s1_id,
+candidate_id, candidate_source)` pair. `candidate_source` is `S2` or `S3`, and
+`block_methods` retains all methods that emitted that pair. The competition
+candidate TSV is serialized separately with columns `source1_entity_id` and
+`candidate_entity_ids`.
 
 Phase 3 must never depend on Phase 2 implementation details.
 It consumes the candidate-pair contract.
