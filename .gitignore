@@ -1,0 +1,102 @@
+# =========================
+# DATASETS
+# =========================
+
+datasets/
+*.csv
+*.tsv
+*.jsonl
+*.parquet
+*.pq
+
+# =========================
+# GENERATED OUTPUTS
+# =========================
+
+outputs/*
+!outputs/candidates/
+!outputs/scores/
+!outputs/submissions/
+!outputs/metrics/
+!outputs/errors/
+
+outputs/candidates/*
+outputs/scores/*
+outputs/submissions/*
+outputs/metrics/*
+outputs/errors/*
+
+# Keep folder placeholders
+!outputs/**/.gitkeep
+
+# =========================
+# MODELS
+# =========================
+
+models/*
+!models/.gitkeep
+
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# =========================
+# EXPERIMENT LOGS
+# =========================
+
+experiments/logs/*
+!experiments/logs/.gitkeep
+
+# =========================
+# PYTHON
+# =========================
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+.venv/
+venv/
+env/
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+# SECRETS
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# AWS credentials
+.aws/
+
+# Competition submission artifacts
+output/*
+!output/.gitkeep
+
+# macOS
+**/.DS_Store
+
+# Competition submission artifacts
+output/*
+!output/.gitkeep

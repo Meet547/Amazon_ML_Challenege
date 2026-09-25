@@ -1,0 +1,11 @@
+polars
+pyarrow
+duckdb
+numpy
+scipy
+scikit-learn
+rapidfuzz
+lightgbm
+pyyaml
+joblib
+tqdm
