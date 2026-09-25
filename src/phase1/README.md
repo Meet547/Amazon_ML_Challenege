@@ -34,6 +34,19 @@ uses Unicode NFKC, case folding, punctuation-to-space replacement, and collapsed
 whitespace. It retains all semantic words, including legal suffixes, and all
 numeric address tokens. The same deterministic functions apply to train and test.
 
+Each successful run also atomically writes `outputs/metrics/phase1_profile.json`.
+Its top-level schema is `{ "schema_version": 1, "datasets": [...] }`. Each
+dataset entry contains `dataset`, `split`, `source`, `row_count`,
+`unique_entity_id_count`, `null_counts`, `blank_string_counts`,
+`name_length_statistics`, `address_length_statistics`, `country_distribution`,
+`source_prefix_distribution`, and `duplicate_info`. Distribution entries are
+sorted objects containing the observed value and its `len` count. Blank-string
+counts include whitespace-only values and are separate from null counts. Runtime
+is logged but excluded from the JSON so the profile is deterministic.
+The two field-count maps are keyed by input column; each length-statistics map
+contains `avg_length`, `median_length`, `min_length`, and `max_length`; and
+`duplicate_info` contains `entity_id_count` and `full_row_count`.
+
 Phase 2 can use `entity_id` as its source record identity and the normalized name,
 address, and country fields to build blocking keys. The candidate pair interface
 remains the contract documented in `docs/CONTRACTS.md` (`s1_id`, `candidate_id`,
@@ -42,7 +55,19 @@ so there is not currently a concrete loader for an end-to-end invocation.
 
 ## Run
 
-Install the documented dependencies, then run all six source files:
+Use Python 3.12 and install dependencies from the repository root. Polars, the
+Phase 1 execution dependency, is pinned to the version used for verification;
+other project dependencies remain unpinned because they are not needed by this
+phase's loader/normalizer:
+
+```bash
+python3.12 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+The canonical command from the repository root processes all six source files
+and writes the profile to the configured path:
 
 ```bash
 python -m src.phase1.run
@@ -55,8 +80,19 @@ python -m src.phase1.run --split train
 python -m src.phase1.run --data-dir /path/to/datasets --output-dir /path/to/normalized
 ```
 
+The output and profile defaults are `PHASE1_OUTPUT` and `PHASE1_PROFILE` in
+`src/common/config.py`; override the profile with `--profile-path`.
+
 The command streams TSV input through Polars, validates before writing, checks
 output row counts, and logs per-file row counts, field missing counts and
 uniqueness, text-length summaries, duplicate ID count, and runtime. Any invalid
 ID or schema fails clearly instead of silently rewriting IDs or dropping rows.
 Duplicate business records with different IDs are retained.
+
+## Training labels
+
+Ground truth is deliberately not read by Phase 1. Later supervised code can
+load and validate training labels with `src.evaluation.ground_truth.load_ground_truth`.
+It returns `source1_entity_id` and `matched_entity_ids` as a list of IDs; a
+singleton's empty target field becomes `[]`. It verifies references against
+the three training entity files and never participates in test preprocessing.
