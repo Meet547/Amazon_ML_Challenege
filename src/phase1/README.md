@@ -1,7 +1,7 @@
 # Phase 1 — Data Ingestion & Normalization
 
 Phase 1 reads the competition's raw TSV entity files, validates source identity,
-profiles the records, and writes deterministic normalized TSV files for Phase 2.
+profiles the records, and writes deterministic normalized Parquet files for Phase 2.
 It never reads ground truth and never removes or merges records.
 
 ## Inputs and schema
