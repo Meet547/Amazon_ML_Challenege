@@ -30,6 +30,13 @@ and Source 3 records.
 
 Original IDs must always be preserved.
 
+The entity output retains `entity_id`, `business_name`,
+`business_address`, and `country`, and appends `business_name_normalized`,
+`business_address_normalized`, and `country_normalized`. Phase 2 uses the
+preserved `entity_id` values for its `s1_id` / `candidate_id` references.
+The artifacts are Zstandard-compressed Parquet under `outputs/normalized/` to
+support large datasets without duplicating text as expanded TSV output.
+
 
 ## Phase 2 → Phase 3
 
