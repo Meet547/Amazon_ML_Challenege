@@ -1114,6 +1114,220 @@
       "source3": 5285603
     }
   },
+  "phase2_2_high_recall_iteration": {
+    "baseline": {
+      "candidate_pairs": 81039757,
+      "candidate_recall": 0.726483743576014,
+      "fully_recovered_positive_s1_pct": 0.5074885749198252,
+      "mean_candidates_per_s1": 36.722397058936814,
+      "p99_candidates_per_s1": 193,
+      "s2_recall": 0.737850601266671,
+      "s3_recall": 0.7158405129252935
+    },
+    "cross_script_audit": {
+      "classification": "A name has Latin letters and the paired name has non-Latin letters; mixed-script names may satisfy both sides.",
+      "cross_script_true_pairs": 551240,
+      "note": "This is an independent Unicode-script definition and is not directly comparable with the earlier 1% heuristic failure-mode sample.",
+      "recall": 0.3906465423409041,
+      "recovered_by_integrated_configuration": 215340
+    },
+    "experiments": {
+      "character_3gram_cap_1000": {
+        "cumulative_candidate_pairs": 82222271,
+        "cumulative_recall": 0.7273186081052686,
+        "incremental_pairs": 1182514,
+        "incremental_true_pairs": 6377,
+        "note": "Unicode codepoint n-grams; three offset extracts; key capped by S1-count × target-count.",
+        "raw_unique_method_pairs": 1433008
+      },
+      "character_3gram_cap_3000": {
+        "cumulative_candidate_pairs": 84626921,
+        "cumulative_recall": 0.7279157254202961,
+        "incremental_pairs": 3587164,
+        "incremental_true_pairs": 10938,
+        "maximum_candidates_per_s1": 2281,
+        "mean_candidates_per_s1": 38.347886394048274,
+        "note": "Looser cap added 4.14M estimated raw key-pair joins; low incremental true-pair yield.",
+        "p95_candidates_per_s1": 110,
+        "p99_candidates_per_s1": 207,
+        "raw_unique_method_pairs": 4106749
+      },
+      "character_4gram_cap_1000": {
+        "incremental_pairs": 8223192,
+        "incremental_true_pairs": 47657,
+        "note": "Largest incremental gain among tested n-gram settings, but 8.22M net candidates for 0.624 recall points; not selected.",
+        "raw_unique_method_pairs": 10418802
+      },
+      "core_name_exact_cap_1000": {
+        "cumulative_recall": 0.7443168793321607,
+        "incremental_pairs": 1577994,
+        "incremental_true_pairs": 136216,
+        "raw_unique_method_pairs": 7201651,
+        "s2_recall": 0.7557549925966918,
+        "s3_recall": 0.7336069293181361
+      },
+      "selected_combination": {
+        "candidate_pair_growth_pct": 2.882484,
+        "candidate_pairs": 83375608,
+        "candidate_recall": 0.7488516194237903,
+        "incremental_pairs": 2335851,
+        "incremental_true_pairs": 170854,
+        "methods": [
+          "existing_phase2_blocks",
+          "name_core_exact",
+          "name_sorted_tokens"
+        ],
+        "note": "Full real-train CLI run; method order is current Phase 2 order. Candidate recall remains below 85–90% target.",
+        "recall_gain_over_baseline_points": 2.23678758437703,
+        "recovered_true_pairs": 5720002,
+        "s2_recall": 0.7601885846915992,
+        "s3_recall": 0.7382363782104094,
+        "unique_method_contributions": {
+          "name_core_exact": {
+            "incremental_pairs_over_previous": 1577994,
+            "new_true_pairs": 136216,
+            "raw_pairs": 7201651
+          },
+          "name_sorted_tokens": {
+            "incremental_pairs_over_previous": 757857,
+            "new_true_pairs": 34638,
+            "raw_pairs": 8334654
+          }
+        }
+      },
+      "sorted_informative_tokens_cap_1000": {
+        "cumulative_recall": 0.7427453388257828,
+        "incremental_pairs": 1939524,
+        "incremental_true_pairs": 124212,
+        "note": "Sorted all distinct informative tokens; tokens shorter than 3 characters and configured legal-form tokens excluded.",
+        "raw_unique_method_pairs": 8334654,
+        "s2_recall": 0.7541514162668104,
+        "s3_recall": 0.7320653851984387
+      }
+    },
+    "final_assessment": {
+      "fully_recovered_positive_s1_pct": 0.5215322325964905,
+      "phase3_started": false,
+      "remaining_missed_true_pairs": 1918363,
+      "status": "PARTIAL — selected blocks integrated and real train validation passed; 85–90% recall target not reached."
+    },
+    "integrated_train_run": {
+      "artifact_schema": [
+        "s1_id",
+        "candidate_id",
+        "candidate_source",
+        "block_methods"
+      ],
+      "blocking_configuration": {
+        "address_token_max_pair_estimate": 1000,
+        "address_token_min_length": 2,
+        "exact_name_country": "provenance subset of exact_name; no redundant candidate join",
+        "name_core_max_pair_estimate": 1000,
+        "name_sorted_token_max_pair_estimate": 1000,
+        "name_sorted_token_min_length": 3,
+        "name_token_max_pair_estimate": 1000,
+        "name_token_min_length": 5,
+        "name_token_pair_max_pair_estimate": 1000,
+        "name_token_pair_min_length": 3,
+        "numeric_address_max_pair_estimate": 1000,
+        "numeric_address_min_length": 2
+      },
+      "candidate_artifact": "outputs/candidates/train/candidate_pairs.parquet",
+      "candidate_volume": {
+        "by_method": [
+          {
+            "block_methods": "address_token",
+            "len": 18751321
+          },
+          {
+            "block_methods": "exact_address",
+            "len": 769803
+          },
+          {
+            "block_methods": "exact_name",
+            "len": 21760611
+          },
+          {
+            "block_methods": "name_core_exact",
+            "len": 7201651
+          },
+          {
+            "block_methods": "name_country",
+            "len": 21680763
+          },
+          {
+            "block_methods": "name_sorted_tokens",
+            "len": 8334654
+          },
+          {
+            "block_methods": "numeric_address",
+            "len": 3082945
+          },
+          {
+            "block_methods": "rare_name_token",
+            "len": 7723344
+          },
+          {
+            "block_methods": "rare_name_token_pair",
+            "len": 38426317
+          }
+        ],
+        "by_source": [
+          {
+            "candidate_source": "S2",
+            "len": 40817690
+          },
+          {
+            "candidate_source": "S3",
+            "len": 42557918
+          }
+        ],
+        "max_per_s1": 1486,
+        "mean_per_s1": 37.780865779326916,
+        "median_per_s1": 27.0,
+        "p90_per_s1": 82.0,
+        "p95_per_s1": 105.0,
+        "p99_per_s1": 193.0,
+        "source1_count": 2206821,
+        "total_pairs": 83375608,
+        "zero_candidate_s1": 15292
+      },
+      "recall": {
+        "by_candidate_source": {
+          "S2": {
+            "recall": 0.7601885846915992,
+            "recovered_pairs": 2807847,
+            "true_pairs": 3693619
+          },
+          "S3": {
+            "recall": 0.7382363782104094,
+            "recovered_pairs": 2912155,
+            "true_pairs": 3944746
+          }
+        },
+        "candidate_recall": 0.7488516194237903,
+        "positive_s1_recovery": {
+          "fully_recovered_s1": 1086651,
+          "fully_recovered_s1_pct": 0.5215322325964905,
+          "partially_recovered_s1": 826118,
+          "partially_recovered_s1_pct": 0.396490837378466,
+          "positive_s1_count": 2083574,
+          "zero_recall_s1": 170805,
+          "zero_recall_s1_pct": 0.08197693002504351
+        },
+        "recovered_true_pairs": 5720002,
+        "singleton_s1_count_excluded_from_recall": 123247,
+        "true_pairs": 7638365
+      },
+      "runtime_seconds": 450.884
+    },
+    "not_selected_or_not_run": {
+      "character_ngram": "Not selected: 3-gram recall yield was low; 4-gram growth was 8.22M candidates for 0.624 points.",
+      "cross_script_transliteration": "Not added: available normalized text is Unicode-preserving, and no safe transliteration implementation/dependency is configured.",
+      "geo": "Not measured: Phase 1 exposes country and unstructured normalized address only; existing address-token and numeric-address blocks already use those fields, with no structured city/state columns.",
+      "phonetic_nysiis": "Not measured: no NYSIIS library is present in the project environment. No row-by-row Python implementation was introduced."
+    }
+  },
   "phase3_handoff_contract": {
     "columns": [
       "s1_id",

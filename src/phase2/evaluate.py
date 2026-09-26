@@ -71,6 +71,7 @@ def contribution_by_method(pairs: pl.LazyFrame, labels: pl.DataFrame) -> dict:
     order = [
         "exact_name", "name_country", "exact_address", "rare_name_token",
         "rare_name_token_pair", "address_token", "numeric_address",
+        "name_core_exact", "name_sorted_tokens",
     ]
     rows = []
     active = []

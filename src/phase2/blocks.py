@@ -4,6 +4,12 @@ import polars as pl
 
 from .config import LARGE_BLOCK_PAIR_THRESHOLD, LARGE_BLOCK_RECORD_THRESHOLD
 
+LEGAL_FORM_TOKENS = [
+    "inc", "incorporated", "corp", "corporation", "ltd", "limited",
+    "co", "company", "pvt", "private", "llp", "lp", "llc", "plc",
+    "gmbh", "sarl", "sa", "bv", "nv",
+]
+
 
 def source2_and_source3(tables) -> pl.LazyFrame:
     """Combine target sources while carrying explicit S2/S3 identity."""
@@ -116,6 +122,64 @@ def name_token_pair_key_frame(frame: pl.LazyFrame, id_column: str, min_length: i
     )
 
 
+def character_ngram_key_frame(frame: pl.LazyFrame, id_column: str, n: int = 3) -> pl.LazyFrame:
+    """Extract deterministic overlapping Unicode-codepoint n-grams.
+
+    ``extract_all`` finds non-overlapping matches. Starting it at each of the
+    ``n`` possible offsets covers every overlapping n-gram without a Python
+    callback or a record-by-record object index.
+    """
+    if n < 2:
+        raise ValueError("character n-gram size must be at least 2")
+    name = pl.col("business_name_normalized")
+    all_offsets = pl.concat_list([
+        name.str.slice(offset).str.extract_all(rf".{{{n}}}")
+        for offset in range(n)
+    ]).list.eval(pl.element().unique())
+    return (
+        frame.select(pl.col(id_column).alias("entity_id"), name)
+        .filter(pl.col("business_name_normalized").str.len_chars() >= n)
+        .with_columns(all_offsets.alias("key"))
+        .explode("key", empty_as_null=True)
+        .filter(pl.col("key").str.len_chars() == n)
+        .select("entity_id", "key")
+    )
+
+
+def core_name_key_frame(frame: pl.LazyFrame, id_column: str) -> pl.LazyFrame:
+    """Remove generic legal-form tokens while preserving original Phase 1 text."""
+    core_tokens = (
+        pl.col("business_name_normalized").str.split(" ").list.eval(
+            pl.element().filter(~pl.element().is_in(LEGAL_FORM_TOKENS))
+        )
+    )
+    return (
+        frame.select(pl.col(id_column).alias("entity_id"), pl.col("business_name_normalized"))
+        .filter(pl.col("business_name_normalized") != "")
+        .with_columns(core_tokens.alias("_core_tokens"))
+        .filter(pl.col("_core_tokens").list.eval(pl.element().str.len_chars() >= 3).list.any())
+        .select("entity_id", pl.col("_core_tokens").list.join(" ").alias("key"))
+        .filter(pl.col("key") != "")
+    )
+
+
+def sorted_name_token_key_frame(frame: pl.LazyFrame, id_column: str, min_length: int = 3) -> pl.LazyFrame:
+    """Order-invariant signature over all informative name tokens."""
+    informative = (
+        pl.col("business_name_normalized").str.split(" ").list.unique()
+        .list.eval(pl.element().filter(
+            (pl.element().str.len_chars() >= min_length)
+            & ~pl.element().is_in(LEGAL_FORM_TOKENS)
+        ))
+        .list.sort()
+    )
+    return (
+        frame.select(pl.col(id_column).alias("entity_id"), pl.col("business_name_normalized"))
+        .filter(pl.col("business_name_normalized") != "")
+        .with_columns(informative.alias("_tokens"))
+        .filter(pl.col("_tokens").list.len() > 0)
+        .select("entity_id", pl.col("_tokens").list.join("␟").alias("key"))
+    )
 def profile_key_blocks(
     method: str,
     left_keys: pl.LazyFrame,

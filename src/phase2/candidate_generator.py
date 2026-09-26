@@ -6,12 +6,14 @@ import polars as pl
 
 from .blocks import (
     address_token_key_frame,
+    core_name_key_frame,
     exact_key_frame,
     name_country_key_frame,
     name_token_pair_key_frame,
     numeric_address_key_frame,
     profile_key_blocks,
     source2_and_source3,
+    sorted_name_token_key_frame,
     token_key_frame,
 )
 from .config import NAME_TOKEN_MAX_PAIR_ESTIMATE, NAME_TOKEN_MIN_LENGTH
@@ -22,6 +24,7 @@ PAIR_COLUMNS = ["s1_id", "candidate_id", "candidate_source", "block_methods"]
 METHODS = (
     "exact_name", "name_country", "exact_address", "rare_name_token",
     "rare_name_token_pair", "address_token", "numeric_address",
+    "name_core_exact", "name_sorted_tokens",
 )
 
 
@@ -165,6 +168,18 @@ def generate_candidates(
         "numeric_address", left_numeric_address, right_numeric_address, pair_cap=1_000,
     )
 
+    left_core_name = core_name_key_frame(s1, "s1_id")
+    right_core_name = core_name_key_frame(targets, "candidate_id")
+    shared_core_name, blocks["name_core_exact"] = profile_key_blocks(
+        "name_core_exact", left_core_name, right_core_name, pair_cap=1_000,
+    )
+
+    left_sorted_tokens = sorted_name_token_key_frame(s1, "s1_id")
+    right_sorted_tokens = sorted_name_token_key_frame(targets, "candidate_id")
+    shared_sorted_tokens, blocks["name_sorted_tokens"] = profile_key_blocks(
+        "name_sorted_tokens", left_sorted_tokens, right_sorted_tokens, pair_cap=1_000,
+    )
+
     # Country-exact name is a strict subset of exact-name pairs. It is recorded
     # as provenance on those pairs, avoiding a redundant second large join.
     raw_pairs_by_method = {
@@ -179,6 +194,12 @@ def generate_candidates(
         ),
         "numeric_address": _key_pairs(
             left_numeric_address, right_numeric_address, shared_numeric_address, targets, "numeric_address", 1_000,
+        ),
+        "name_core_exact": _key_pairs(
+            left_core_name, right_core_name, shared_core_name, targets, "name_core_exact", 1_000,
+        ),
+        "name_sorted_tokens": _key_pairs(
+            left_sorted_tokens, right_sorted_tokens, shared_sorted_tokens, targets, "name_sorted_tokens", 1_000,
         ),
     }
     raw_pairs = pl.concat(list(raw_pairs_by_method.values()), how="vertical")
@@ -198,6 +219,9 @@ def generate_candidates(
         "address_token_max_pair_estimate": 1_000,
         "numeric_address_min_length": 2,
         "numeric_address_max_pair_estimate": 1_000,
+        "name_core_max_pair_estimate": 1_000,
+        "name_sorted_token_min_length": 3,
+        "name_sorted_token_max_pair_estimate": 1_000,
         "exact_name_country": "provenance subset of exact_name; no redundant candidate join",
     }
     return CandidateGeneration(pairs, raw_pairs_by_method, blocks, strategy_counts, configuration)

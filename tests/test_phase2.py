@@ -2,7 +2,12 @@ import polars as pl
 import json
 
 from src.phase2.candidate_generator import generate_candidates
-from src.phase2.blocks import profile_key_blocks
+from src.phase2.blocks import (
+    character_ngram_key_frame,
+    core_name_key_frame,
+    profile_key_blocks,
+    sorted_name_token_key_frame,
+)
 from src.phase2.deduplicate import write_candidate_tsv
 from src.phase2.evaluate import candidate_volume, contribution_by_method, evaluate_recall
 from src.phase2.loader import ENTITY_COLUMNS, load_entity_tables
@@ -51,6 +56,46 @@ def test_block_profile_breaks_equal_pair_estimate_ties_by_key():
     assert [row["key"] for row in stats["largest_shared_blocks"]] == ["a", "z"]
 
 
+def test_character_ngrams_are_overlapping_unicode_safe_and_deterministic():
+    frame = pl.DataFrame({
+        "entity_id": ["S1-1", "S1-2", "S1-3", "S1-4"],
+        "business_name_normalized": ["williams", "राम", "", "wilblims"],
+    }).lazy()
+    grams = character_ngram_key_frame(frame, "entity_id", n=3).sort("entity_id", "key").collect()
+    assert set(grams.filter(pl.col("entity_id") == "S1-1")["key"].to_list()) == {
+        "wil", "ill", "lli", "lia", "iam", "ams",
+    }
+    assert grams.filter(pl.col("entity_id") == "S1-2").height == 1
+    assert grams.filter(pl.col("entity_id") == "S1-3").is_empty()
+    assert grams.equals(character_ngram_key_frame(frame, "entity_id", n=3).sort("entity_id", "key").collect())
+
+
+def test_core_and_sorted_name_signatures_are_secondary_and_order_invariant():
+    frame = pl.DataFrame({
+        "entity_id": ["S1-1", "S1-2", "S1-3", "S1-4"],
+        "business_name_normalized": [
+            "acme alpha group incorporated", "group acme alpha inc",
+            "private limited", "acme beta group ltd",
+        ],
+    }).lazy()
+    core = core_name_key_frame(frame, "entity_id").collect()
+    assert core.filter(pl.col("entity_id") == "S1-1")["key"].item() == "acme alpha group"
+    assert core.filter(pl.col("entity_id") == "S1-3").is_empty()
+    sorted_keys = sorted_name_token_key_frame(frame, "entity_id").collect()
+    k1 = sorted_keys.filter(pl.col("entity_id") == "S1-1")["key"].item()
+    k2 = sorted_keys.filter(pl.col("entity_id") == "S1-2")["key"].item()
+    assert k1 == k2 == "acme␟alpha␟group"
+
+
+def test_character_key_frequency_cap_excludes_common_buckets():
+    left = pl.DataFrame({"entity_id": [f"S1-{i}" for i in range(5)], "key": ["common"] * 5}).lazy()
+    right = pl.DataFrame({"entity_id": [f"S2-{i}" for i in range(3)], "key": ["common"] * 3}).lazy()
+    shared, stats = profile_key_blocks("ngram_cap_test", left, right, pair_cap=10)
+    assert stats["shared_key_count"] == 1
+    assert stats["eligible_shared_key_count"] == 0
+    assert stats["eligible_estimated_candidate_pairs"] == 0
+
+
 def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tmp_path):
     _write_tables(tmp_path / "normalized")
     tables = load_entity_tables("train", tmp_path / "normalized")
@@ -62,7 +107,8 @@ def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tm
     acme = pairs.filter(pl.col("s1_id") == "S1-1")
     assert set(acme["candidate_id"].to_list()) == {"S2-1", "S2-2", "S3-1"}
     assert acme.filter(pl.col("candidate_id") == "S2-1")["block_methods"].to_list()[0] == [
-        "exact_name", "name_country", "rare_name_token_pair",
+        "exact_name", "name_core_exact", "name_country", "name_sorted_tokens",
+        "rare_name_token_pair",
     ]
     assert "exact_address" in pairs.filter(pl.col("candidate_id") == "S2-2")["block_methods"].to_list()[0]
     assert pairs.filter(pl.col("s1_id") == "S1-2").is_empty()
@@ -117,7 +163,7 @@ def test_ground_truth_recall_excludes_singletons_and_reports_partial_recovery(tm
     assert result["positive_s1_recovery"]["partially_recovered_s1"] == 1
     assert result["singleton_s1_count_excluded_from_recall"] == 1
     stages = contribution_by_method(pairs, labels)["cumulative"]
-    assert len(stages) == 7
+    assert len(stages) == 9
     assert stages[0]["candidate_recall"] == 2 / 3
     assert stages[1]["candidate_recall"] == 2 / 3
 
