@@ -2,6 +2,7 @@ import polars as pl
 import json
 
 from src.phase2.candidate_generator import generate_candidates
+from src.phase2.blocks import profile_key_blocks
 from src.phase2.deduplicate import write_candidate_tsv
 from src.phase2.evaluate import candidate_volume, contribution_by_method, evaluate_recall
 from src.phase2.loader import ENTITY_COLUMNS, load_entity_tables
@@ -41,6 +42,13 @@ def test_loader_validates_phase1_contract_and_preserves_sources(tmp_path):
     assert loaded.source1.collect()["entity_id"].to_list() == [r["entity_id"] for r in expected["source1"]]
     assert loaded.source2.collect_schema().names() == ENTITY_COLUMNS
     assert loaded.source3.collect()["entity_id"].to_list() == ["S3-1"]
+
+
+def test_block_profile_breaks_equal_pair_estimate_ties_by_key():
+    left = pl.DataFrame({"key": ["z", "a"]}).lazy()
+    right = pl.DataFrame({"key": ["a", "z"]}).lazy()
+    _, stats = profile_key_blocks("tie_test", left, right)
+    assert [row["key"] for row in stats["largest_shared_blocks"]] == ["a", "z"]
 
 
 def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tmp_path):
