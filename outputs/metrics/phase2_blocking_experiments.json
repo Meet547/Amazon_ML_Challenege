@@ -1,0 +1,1158 @@
+{
+  "additional_cap_trials": {
+    "address_token_cap_3000": {
+      "eligible_estimated_raw_pairs": 42104552,
+      "eligible_shared_key_count": 410117,
+      "max_block_size": 2189123,
+      "median_block_size": 7,
+      "method_candidate_pairs": 40686339,
+      "new_true_pairs_recovered_vs_selected_configuration": 170577,
+      "note": "Full unique candidate-volume delta was not materialized; method pair output count is reported without representing it as a net increase.",
+      "p90_block_size": 79,
+      "p95_block_size": 228,
+      "p99_block_size": 1779,
+      "pathological_keys_over_1000_records": 7139,
+      "shared_key_count": 440432,
+      "trial_cumulative_recall": 0.7488153551185365,
+      "trial_cumulative_recovered_true_pairs": 5719725,
+      "trial_total_candidate_pairs": null
+    },
+    "name_token_pair_cap_3000": {
+      "cumulative_candidate_pairs": 92711875,
+      "cumulative_recall": 0.6543630737729867,
+      "cumulative_recovered_true_pairs": 4998264,
+      "eligible_estimated_raw_pairs": 83750957,
+      "eligible_shared_key_count": 1892406,
+      "increment_over_name_pair_cap_1000": {
+        "candidate_pairs": 29401513,
+        "recall_points": 2.994593738319651,
+        "recovered_true_pairs": 228738
+      },
+      "max_block_size": 1145937,
+      "median_block_size": 5,
+      "method_candidate_pairs": 67759892,
+      "p90_block_size": 21,
+      "p95_block_size": 40,
+      "p99_block_size": 222,
+      "pathological_keys_over_1000_records": 3274,
+      "shared_key_count": 1922502
+    },
+    "numeric_address_only_over_baseline": {
+      "cumulative_recall": 0.37472260097547055,
+      "cumulative_recovered_true_pairs": 2862268,
+      "method_candidate_pairs": 3082945,
+      "new_pairs_vs_baseline": 2961720,
+      "s2_recall": 0.394918,
+      "s3_recall": 0.355813
+    }
+  },
+  "blocking_configuration": {
+    "address_token_max_pair_estimate": 1000,
+    "address_token_min_length": 2,
+    "exact_name_country": "provenance subset of exact_name; no redundant candidate join",
+    "name_token_max_pair_estimate": 1000,
+    "name_token_min_length": 5,
+    "name_token_pair_max_pair_estimate": 1000,
+    "name_token_pair_min_length": 3,
+    "numeric_address_max_pair_estimate": 1000,
+    "numeric_address_min_length": 2
+  },
+  "blocking_statistics": {
+    "address_token": {
+      "blocks_over_1000_records": 7139,
+      "blocks_over_1m_candidate_pairs": 3150,
+      "eligible_estimated_candidate_pairs": 19659369,
+      "eligible_shared_key_count": 397475,
+      "estimated_candidate_pairs_before_dedup": 2022800931,
+      "largest_shared_blocks": [
+        {
+          "block_size": 523573,
+          "key": "west",
+          "pair_estimate": 4252974554,
+          "s1_count": 131270,
+          "target_count": 392303
+        },
+        {
+          "block_size": 226342,
+          "key": "east",
+          "pair_estimate": 4252404504,
+          "s1_count": 47900,
+          "target_count": 178442
+        },
+        {
+          "block_size": 222194,
+          "key": "sector",
+          "pair_estimate": 4209030177,
+          "s1_count": 49141,
+          "target_count": 173053
+        },
+        {
+          "block_size": 153433,
+          "key": "1st",
+          "pair_estimate": 4206429772,
+          "s1_count": 35741,
+          "target_count": 117692
+        },
+        {
+          "block_size": 140786,
+          "key": "wa",
+          "pair_estimate": 4169941965,
+          "s1_count": 42371,
+          "target_count": 98415
+        },
+        {
+          "block_size": 429451,
+          "key": "plot",
+          "pair_estimate": 4143528804,
+          "s1_count": 87471,
+          "target_count": 341980
+        },
+        {
+          "block_size": 153991,
+          "key": "village",
+          "pair_estimate": 4077285468,
+          "s1_count": 33972,
+          "target_count": 120019
+        },
+        {
+          "block_size": 138294,
+          "key": "md",
+          "pair_estimate": 4011966440,
+          "s1_count": 41410,
+          "target_count": 96884
+        },
+        {
+          "block_size": 595628,
+          "key": "avenue",
+          "pair_estimate": 4008469723,
+          "s1_count": 189785,
+          "target_count": 405843
+        },
+        {
+          "block_size": 223402,
+          "key": "main",
+          "pair_estimate": 4000583880,
+          "s1_count": 47036,
+          "target_count": 176366
+        }
+      ],
+      "max_block_size": 2189123,
+      "mean_block_size": 193.8951302357685,
+      "median_block_size": 7.0,
+      "method": "address_token",
+      "p90_block_size": 79.0,
+      "p95_block_size": 228.0,
+      "p99_block_size": 1779.0,
+      "pair_cap": 1000,
+      "record_count": 87843556,
+      "shared_key_count": 440432,
+      "unique_key_count": 742357
+    },
+    "exact_address": {
+      "blocks_over_1000_records": 0,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 769803,
+      "eligible_shared_key_count": 487477,
+      "estimated_candidate_pairs_before_dedup": 769803,
+      "largest_shared_blocks": [
+        {
+          "block_size": 32,
+          "key": "1948 weaver forest way morrisville nc",
+          "pair_estimate": 240,
+          "s1_count": 12,
+          "target_count": 20
+        },
+        {
+          "block_size": 27,
+          "key": "66 frank edge alto tx",
+          "pair_estimate": 162,
+          "s1_count": 9,
+          "target_count": 18
+        },
+        {
+          "block_size": 25,
+          "key": "701 barberry spur avenue delaware oh",
+          "pair_estimate": 154,
+          "s1_count": 11,
+          "target_count": 14
+        },
+        {
+          "block_size": 26,
+          "key": "5335 fm 2412 gatesville tx",
+          "pair_estimate": 153,
+          "s1_count": 9,
+          "target_count": 17
+        },
+        {
+          "block_size": 24,
+          "key": "218 phillips street storm lake ia",
+          "pair_estimate": 143,
+          "s1_count": 13,
+          "target_count": 11
+        },
+        {
+          "block_size": 24,
+          "key": "12 1 331 c 1 dattatreya colony asif nagar hyderabad telangana",
+          "pair_estimate": 135,
+          "s1_count": 9,
+          "target_count": 15
+        },
+        {
+          "block_size": 24,
+          "key": "3401 150 milan in",
+          "pair_estimate": 135,
+          "s1_count": 9,
+          "target_count": 15
+        },
+        {
+          "block_size": 23,
+          "key": "333 court avenue selmer tn",
+          "pair_estimate": 132,
+          "s1_count": 12,
+          "target_count": 11
+        },
+        {
+          "block_size": 23,
+          "key": "6249 eagles roost drive tucson az",
+          "pair_estimate": 132,
+          "s1_count": 11,
+          "target_count": 12
+        },
+        {
+          "block_size": 23,
+          "key": "11 1 57 10k 1 first floor opp srirama gardens above bedbath kitchen more nizamabad telangana",
+          "pair_estimate": 130,
+          "s1_count": 10,
+          "target_count": 13
+        }
+      ],
+      "max_block_size": 32,
+      "mean_block_size": 2.4207357475327043,
+      "median_block_size": 2.0,
+      "method": "exact_address",
+      "p90_block_size": 3.0,
+      "p95_block_size": 4.0,
+      "p99_block_size": 7.0,
+      "pair_cap": null,
+      "record_count": 12182157,
+      "unique_key_count": 10490205
+    },
+    "exact_name": {
+      "blocks_over_1000_records": 1,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 21760611,
+      "eligible_shared_key_count": 904557,
+      "estimated_candidate_pairs_before_dedup": 21760611,
+      "largest_shared_blocks": [
+        {
+          "block_size": 576,
+          "key": "pediatric group",
+          "pair_estimate": 78588,
+          "s1_count": 222,
+          "target_count": 354
+        },
+        {
+          "block_size": 585,
+          "key": "eye group",
+          "pair_estimate": 78246,
+          "s1_count": 207,
+          "target_count": 378
+        },
+        {
+          "block_size": 591,
+          "key": "meridian",
+          "pair_estimate": 74438,
+          "s1_count": 182,
+          "target_count": 409
+        },
+        {
+          "block_size": 530,
+          "key": "chiropractic group",
+          "pair_estimate": 67089,
+          "s1_count": 209,
+          "target_count": 321
+        },
+        {
+          "block_size": 522,
+          "key": "orthopedic group",
+          "pair_estimate": 65312,
+          "s1_count": 208,
+          "target_count": 314
+        },
+        {
+          "block_size": 522,
+          "key": "dental group",
+          "pair_estimate": 64985,
+          "s1_count": 205,
+          "target_count": 317
+        },
+        {
+          "block_size": 523,
+          "key": "dermatology group",
+          "pair_estimate": 64842,
+          "s1_count": 202,
+          "target_count": 321
+        },
+        {
+          "block_size": 518,
+          "key": "family group",
+          "pair_estimate": 64056,
+          "s1_count": 204,
+          "target_count": 314
+        },
+        {
+          "block_size": 518,
+          "key": "meridian llc",
+          "pair_estimate": 61456,
+          "s1_count": 184,
+          "target_count": 334
+        },
+        {
+          "block_size": 589,
+          "key": "family center",
+          "pair_estimate": 59670,
+          "s1_count": 130,
+          "target_count": 459
+        }
+      ],
+      "max_block_size": 1043,
+      "mean_block_size": 4.017803189848733,
+      "median_block_size": 2.0,
+      "method": "exact_name",
+      "p90_block_size": 5.0,
+      "p95_block_size": 9.0,
+      "p99_block_size": 33.0,
+      "pair_cap": null,
+      "record_count": 12527040,
+      "unique_key_count": 8277618
+    },
+    "name_country": {
+      "blocks_over_1000_records": 1,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 21680763,
+      "eligible_shared_key_count": 904893,
+      "estimated_candidate_pairs_before_dedup": 21680763,
+      "largest_shared_blocks": [
+        {
+          "block_size": 576,
+          "key": "pediatric group|us",
+          "pair_estimate": 78588,
+          "s1_count": 222,
+          "target_count": 354
+        },
+        {
+          "block_size": 585,
+          "key": "eye group|us",
+          "pair_estimate": 78246,
+          "s1_count": 207,
+          "target_count": 378
+        },
+        {
+          "block_size": 584,
+          "key": "meridian|us",
+          "pair_estimate": 73164,
+          "s1_count": 182,
+          "target_count": 402
+        },
+        {
+          "block_size": 530,
+          "key": "chiropractic group|us",
+          "pair_estimate": 67089,
+          "s1_count": 209,
+          "target_count": 321
+        },
+        {
+          "block_size": 522,
+          "key": "orthopedic group|us",
+          "pair_estimate": 65312,
+          "s1_count": 208,
+          "target_count": 314
+        },
+        {
+          "block_size": 522,
+          "key": "dental group|us",
+          "pair_estimate": 64985,
+          "s1_count": 205,
+          "target_count": 317
+        },
+        {
+          "block_size": 523,
+          "key": "dermatology group|us",
+          "pair_estimate": 64842,
+          "s1_count": 202,
+          "target_count": 321
+        },
+        {
+          "block_size": 518,
+          "key": "family group|us",
+          "pair_estimate": 64056,
+          "s1_count": 204,
+          "target_count": 314
+        },
+        {
+          "block_size": 518,
+          "key": "meridian llc|us",
+          "pair_estimate": 61456,
+          "s1_count": 184,
+          "target_count": 334
+        },
+        {
+          "block_size": 588,
+          "key": "family center|us",
+          "pair_estimate": 59540,
+          "s1_count": 130,
+          "target_count": 458
+        }
+      ],
+      "max_block_size": 1043,
+      "mean_block_size": 4.005715592893304,
+      "median_block_size": 2.0,
+      "method": "name_country",
+      "p90_block_size": 5.0,
+      "p95_block_size": 9.0,
+      "p99_block_size": 33.0,
+      "pair_cap": null,
+      "record_count": 12527040,
+      "unique_key_count": 8290170
+    },
+    "numeric_address": {
+      "blocks_over_1000_records": 1693,
+      "blocks_over_1m_candidate_pairs": 757,
+      "eligible_estimated_candidate_pairs": 3083657,
+      "eligible_shared_key_count": 31905,
+      "estimated_candidate_pairs_before_dedup": 320430668,
+      "largest_shared_blocks": [
+        {
+          "block_size": 157463,
+          "key": "11",
+          "pair_estimate": 3867159582,
+          "s1_count": 30446,
+          "target_count": 127017
+        },
+        {
+          "block_size": 150627,
+          "key": "12",
+          "pair_estimate": 3477247632,
+          "s1_count": 28464,
+          "target_count": 122163
+        },
+        {
+          "block_size": 125624,
+          "key": "14",
+          "pair_estimate": 2358201423,
+          "s1_count": 22973,
+          "target_count": 102651
+        },
+        {
+          "block_size": 119016,
+          "key": "15",
+          "pair_estimate": 2151030839,
+          "s1_count": 22223,
+          "target_count": 96793
+        },
+        {
+          "block_size": 117471,
+          "key": "13",
+          "pair_estimate": 2067618098,
+          "s1_count": 21557,
+          "target_count": 95914
+        },
+        {
+          "block_size": 114788,
+          "key": "16",
+          "pair_estimate": 1983558835,
+          "s1_count": 21193,
+          "target_count": 93595
+        },
+        {
+          "block_size": 101045,
+          "key": "24",
+          "pair_estimate": 1552350756,
+          "s1_count": 18897,
+          "target_count": 82148
+        },
+        {
+          "block_size": 101706,
+          "key": "17",
+          "pair_estimate": 1547190248,
+          "s1_count": 18622,
+          "target_count": 83084
+        },
+        {
+          "block_size": 96816,
+          "key": "18",
+          "pair_estimate": 1418018903,
+          "s1_count": 17989,
+          "target_count": 78827
+        },
+        {
+          "block_size": 93043,
+          "key": "19",
+          "pair_estimate": 1317701842,
+          "s1_count": 17426,
+          "target_count": 75617
+        }
+      ],
+      "max_block_size": 173714,
+      "mean_block_size": 326.69819903024705,
+      "median_block_size": 18.0,
+      "method": "numeric_address",
+      "p90_block_size": 352.0,
+      "p95_block_size": 749.0,
+      "p99_block_size": 5014.0,
+      "pair_cap": 1000,
+      "record_count": 14422784,
+      "shared_key_count": 43320,
+      "unique_key_count": 91273
+    },
+    "rare_name_token": {
+      "blocks_over_1000_records": 1981,
+      "blocks_over_1m_candidate_pairs": 997,
+      "eligible_estimated_candidate_pairs": 7783602,
+      "eligible_shared_key_count": 63536,
+      "estimated_candidate_pairs_before_dedup": 63984367,
+      "largest_shared_blocks": [
+        {
+          "block_size": 133054,
+          "key": "health",
+          "pair_estimate": 2961784560,
+          "s1_count": 28264,
+          "target_count": 104790
+        },
+        {
+          "block_size": 324362,
+          "key": "group",
+          "pair_estimate": 2871898840,
+          "s1_count": 40358,
+          "target_count": 284004
+        },
+        {
+          "block_size": 121832,
+          "key": "clinic",
+          "pair_estimate": 2593394727,
+          "s1_count": 27489,
+          "target_count": 94343
+        },
+        {
+          "block_size": 1600386,
+          "key": "private",
+          "pair_estimate": 2521559216,
+          "s1_count": 432394,
+          "target_count": 1167992
+        },
+        {
+          "block_size": 349601,
+          "key": "partners",
+          "pair_estimate": 2407677256,
+          "s1_count": 34952,
+          "target_count": 314649
+        },
+        {
+          "block_size": 113717,
+          "key": "solutions",
+          "pair_estimate": 2301327060,
+          "s1_count": 26337,
+          "target_count": 87380
+        },
+        {
+          "block_size": 207145,
+          "key": "holdings",
+          "pair_estimate": 2176469386,
+          "s1_count": 11102,
+          "target_count": 196043
+        },
+        {
+          "block_size": 192704,
+          "key": "associates",
+          "pair_estimate": 2121352304,
+          "s1_count": 42804,
+          "target_count": 149900
+        },
+        {
+          "block_size": 109690,
+          "key": "trading",
+          "pair_estimate": 1981156089,
+          "s1_count": 22801,
+          "target_count": 86889
+        },
+        {
+          "block_size": 102991,
+          "key": "global",
+          "pair_estimate": 1975032310,
+          "s1_count": 25481,
+          "target_count": 77510
+        }
+      ],
+      "max_block_size": 1724615,
+      "mean_block_size": 316.90829400689535,
+      "median_block_size": 22.0,
+      "method": "rare_name_token",
+      "p90_block_size": 190.0,
+      "p95_block_size": 327.0,
+      "p99_block_size": 2877.0,
+      "pair_cap": 1000,
+      "record_count": 30810414,
+      "unique_key_count": 1373552
+    },
+    "rare_name_token_pair": {
+      "blocks_over_1000_records": 3274,
+      "blocks_over_1m_candidate_pairs": 1361,
+      "eligible_estimated_candidate_pairs": 50214557,
+      "eligible_shared_key_count": 1873014,
+      "estimated_candidate_pairs_before_dedup": 884800386,
+      "largest_shared_blocks": [
+        {
+          "block_size": 1145937,
+          "key": "limited␟private",
+          "pair_estimate": 3443412604,
+          "s1_count": 431877,
+          "target_count": 714060
+        },
+        {
+          "block_size": 430673,
+          "key": "ltd␟pvt",
+          "pair_estimate": 3197460364,
+          "s1_count": 121461,
+          "target_count": 309212
+        },
+        {
+          "block_size": 120544,
+          "key": "india␟limited",
+          "pair_estimate": 2994393759,
+          "s1_count": 35007,
+          "target_count": 85537
+        },
+        {
+          "block_size": 119000,
+          "key": "india␟private",
+          "pair_estimate": 2586675600,
+          "s1_count": 28620,
+          "target_count": 90380
+        },
+        {
+          "block_size": 91781,
+          "key": "limited␟services",
+          "pair_estimate": 1153752684,
+          "s1_count": 15033,
+          "target_count": 76748
+        },
+        {
+          "block_size": 68949,
+          "key": "and␟llc",
+          "pair_estimate": 936777060,
+          "s1_count": 18609,
+          "target_count": 50340
+        },
+        {
+          "block_size": 63762,
+          "key": "private␟services",
+          "pair_estimate": 639921752,
+          "s1_count": 12478,
+          "target_count": 51284
+        },
+        {
+          "block_size": 63414,
+          "key": "india␟ltd",
+          "pair_estimate": 622935824,
+          "s1_count": 12152,
+          "target_count": 51262
+        },
+        {
+          "block_size": 51000,
+          "key": "and␟inc",
+          "pair_estimate": 486589151,
+          "s1_count": 12707,
+          "target_count": 38293
+        },
+        {
+          "block_size": 47031,
+          "key": "associates␟care",
+          "pair_estimate": 395463690,
+          "s1_count": 10965,
+          "target_count": 36066
+        }
+      ],
+      "max_block_size": 1145937,
+      "mean_block_size": 21.668255741736548,
+      "median_block_size": 5.0,
+      "method": "rare_name_token_pair",
+      "p90_block_size": 21.0,
+      "p95_block_size": 40.0,
+      "p99_block_size": 222.0,
+      "pair_cap": 1000,
+      "record_count": 55695690,
+      "shared_key_count": 1922502,
+      "unique_key_count": 7770985
+    }
+  },
+  "candidate_pairs_parquet": "outputs/candidates/train/candidate_pairs.parquet",
+  "candidate_volume": {
+    "by_method": [
+      {
+        "block_methods": "address_token",
+        "len": 18751321
+      },
+      {
+        "block_methods": "exact_address",
+        "len": 769803
+      },
+      {
+        "block_methods": "exact_name",
+        "len": 21760611
+      },
+      {
+        "block_methods": "name_country",
+        "len": 21680763
+      },
+      {
+        "block_methods": "numeric_address",
+        "len": 3082945
+      },
+      {
+        "block_methods": "rare_name_token",
+        "len": 7723344
+      },
+      {
+        "block_methods": "rare_name_token_pair",
+        "len": 38426317
+      }
+    ],
+    "by_source": [
+      {
+        "candidate_source": "S2",
+        "len": 39679478
+      },
+      {
+        "candidate_source": "S3",
+        "len": 41360279
+      }
+    ],
+    "max_per_s1": 1474,
+    "mean_per_s1": 36.722397058936814,
+    "median_per_s1": 25.0,
+    "p90_per_s1": 82.0,
+    "p95_per_s1": 105.0,
+    "p99_per_s1": 193.0,
+    "source1_count": 2206821,
+    "total_pairs": 81039757,
+    "zero_candidate_s1": 48061
+  },
+  "contribution": {
+    "cumulative": [
+      {
+        "candidate_pairs": 21760611,
+        "candidate_recall": 0.21847515796901562,
+        "candidate_volume": {
+          "max_per_s1": 1042,
+          "mean_per_s1": 9.860614431347173,
+          "median_per_s1": 1,
+          "p90_per_s1": 16,
+          "p95_per_s1": 61,
+          "p99_per_s1": 176,
+          "zero_candidate_s1": 642262
+        },
+        "methods": [
+          "exact_name"
+        ]
+      },
+      {
+        "candidate_pairs": 21760611,
+        "candidate_recall": 0.21847515796901562,
+        "candidate_volume": {
+          "max_per_s1": 1042,
+          "mean_per_s1": 9.860614431347173,
+          "median_per_s1": 1,
+          "p90_per_s1": 16,
+          "p95_per_s1": 61,
+          "p99_per_s1": 176,
+          "zero_candidate_s1": 642262
+        },
+        "methods": [
+          "exact_name",
+          "name_country"
+        ]
+      },
+      {
+        "candidate_pairs": 22430431,
+        "candidate_recall": 0.2880431872527694,
+        "candidate_volume": {
+          "max_per_s1": 1042,
+          "mean_per_s1": 10.164137009752944,
+          "median_per_s1": 2,
+          "p90_per_s1": 16,
+          "p95_per_s1": 61,
+          "p99_per_s1": 176,
+          "zero_candidate_s1": 504975
+        },
+        "methods": [
+          "exact_name",
+          "name_country",
+          "exact_address"
+        ]
+      },
+      {
+        "candidate_pairs": 29844056,
+        "candidate_recall": 0.35306587208126344,
+        "candidate_volume": {
+          "max_per_s1": 1042,
+          "mean_per_s1": 13.52355084531097,
+          "median_per_s1": 2,
+          "p90_per_s1": 42,
+          "p95_per_s1": 64,
+          "p99_per_s1": 177,
+          "zero_candidate_s1": 422854
+        },
+        "full_recall_s1_pct": 0.11024470453173249,
+        "methods": [
+          "exact_name",
+          "name_country",
+          "exact_address",
+          "rare_name_token"
+        ]
+      },
+      {
+        "candidate_pairs": 63710362,
+        "candidate_recall": 0.6244171363897902,
+        "candidate_volume": {
+          "max_per_s1": 1474,
+          "mean_per_s1": 28.86974611896479,
+          "median_per_s1": 16,
+          "p90_per_s1": 67,
+          "p95_per_s1": 89,
+          "p99_per_s1": 184,
+          "zero_candidate_s1": 70682
+        },
+        "full_recall_s1_pct": 0.36330267127541427,
+        "methods": [
+          "exact_name",
+          "name_country",
+          "exact_address",
+          "rare_name_token",
+          "rare_name_token_pair"
+        ]
+      },
+      {
+        "candidate_pairs": 80876692,
+        "candidate_recall": 0.7262308098657239,
+        "candidate_volume": {
+          "max_per_s1": 1474,
+          "mean_per_s1": 36.64850570118736,
+          "median_per_s1": 25,
+          "p90_per_s1": 81,
+          "p95_per_s1": 105,
+          "p99_per_s1": 193,
+          "zero_candidate_s1": 48077
+        },
+        "full_recall_s1_pct": 0.5069932721372027,
+        "methods": [
+          "exact_name",
+          "name_country",
+          "exact_address",
+          "rare_name_token",
+          "rare_name_token_pair",
+          "address_token"
+        ]
+      },
+      {
+        "candidate_pairs": 81039757,
+        "candidate_recall": 0.726483743576014,
+        "candidate_volume": {
+          "max_per_s1": 1474,
+          "mean_per_s1": 36.722397058936814,
+          "median_per_s1": 25,
+          "p90_per_s1": 82,
+          "p95_per_s1": 105,
+          "p99_per_s1": 193,
+          "zero_candidate_s1": 48061
+        },
+        "full_recall_s1_pct": 0.5074885749198252,
+        "methods": [
+          "exact_name",
+          "name_country",
+          "exact_address",
+          "rare_name_token",
+          "rare_name_token_pair",
+          "address_token",
+          "numeric_address"
+        ]
+      }
+    ]
+  },
+  "failure_analysis": {
+    "examples": [
+      {
+        "note": "nearby address number variation",
+        "s1_id": "S1-481012550",
+        "s1_name": "sterling oil inc",
+        "target_id": "S2-849078694",
+        "target_name": "sterling oil"
+      },
+      {
+        "note": "cross-script entity name",
+        "s1_id": "S1-922535128",
+        "s1_name": "supreme infra private limited",
+        "target_id": "S2-927569271",
+        "target_name": "supreme इंफ्रा प्राइवेट लिमिटेड"
+      },
+      {
+        "note": "target address missing",
+        "s1_id": "S1-908741711",
+        "s1_name": "apex alpine",
+        "target_id": "S2-146607525",
+        "target_name": "apex services"
+      }
+    ],
+    "overlap_flags": {
+      "character_3gram_jaccard_at_least_0_10": 0.8808,
+      "partial_name_token_overlap": 0.7222,
+      "shared_address_token": 0.9539,
+      "shared_character_3gram": 0.8837,
+      "shared_exact_name_token": 0.7975,
+      "shared_numeric_address_component": 0.7857
+    },
+    "primary_failure_modes": {
+      "abbreviation_or_suffix_variation": {
+        "pairs": 14102,
+        "share": 0.28521732095544367
+      },
+      "address_variation": {
+        "pairs": 971,
+        "share": 0.019638775964241652
+      },
+      "cross_script": {
+        "pairs": 5112,
+        "share": 0.10339178447909714
+      },
+      "missing_address": {
+        "pairs": 2256,
+        "share": 0.04562829925368606
+      },
+      "partial_name_overlap_only": {
+        "pairs": 1,
+        "share": 2.022530995287503e-05
+      },
+      "short_or_common_names": {
+        "pairs": 3112,
+        "share": 0.06294116457334709
+      },
+      "spelling_or_character_noise": {
+        "pairs": 20307,
+        "share": 0.4107153692130332
+      },
+      "token_reordering": {
+        "pairs": 3582,
+        "share": 0.07244706025119835
+      }
+    },
+    "sample_method": "Deterministic stable-hash 1% sample of baseline missed train pairs; each pair assigned one heuristic primary label.",
+    "sampled_missed_pairs": 49443
+  },
+  "final_target_assessment": {
+    "measured_cap_trial_recall_ceiling": 0.7488153551185365,
+    "primary_recall_target": 0.95,
+    "selected_configuration_recall": 0.726483743576014,
+    "stopping_reason": "Further cap expansion raised recall by 1.31 points for 29.40M additional unique pairs in the name-pair cap experiment; address cap 3000 recovered 170,577 more true pairs but emitted 40.69M method pairs. This is a measured cost plateau for tested caps, not a claim that higher recall is impossible.",
+    "target_met": false
+  },
+  "ground_truth_validation": {
+    "invalid_s1_ids": 0,
+    "invalid_target_ids": 0,
+    "label_data_used_for_candidate_generation": false,
+    "malformed_or_duplicate_match_lists": 0,
+    "match_pairs": 7638365,
+    "positive_s1": 2083574,
+    "rows": 2206821,
+    "singleton_s1": 123247
+  },
+  "incremental_recovery_from_baseline": {
+    "address_token": {
+      "cumulative_candidate_pairs": 80876692,
+      "cumulative_recall": 0.7262308098657239,
+      "new_true_pairs_recovered": 777690
+    },
+    "numeric_address": {
+      "cumulative_candidate_pairs": 81039757,
+      "cumulative_recall": 0.726483743576014,
+      "new_true_pairs_recovered": 1932
+    },
+    "rare_name_token_pair": {
+      "cumulative_candidate_pairs": 63710362,
+      "cumulative_recall": 0.6244171363897902,
+      "new_true_pairs_recovered": 2072680
+    },
+    "remaining_missed_true_pairs": 2089217,
+    "total_new_true_pairs_recovered": 2852302
+  },
+  "independent_integrity_audit": {
+    "candidate_rows": 81039757,
+    "duplicate_pairs": 0,
+    "engine": "DuckDB over the Phase 1 Parquets, final candidate Parquet, and ground-truth Parquet; 64 hash buckets used to bound exact pair-distinct checks.",
+    "ground_truth_pairs": 7638365,
+    "invalid_candidate_ids": 0,
+    "invalid_candidate_source_values_or_prefixes": 0,
+    "invalid_ground_truth_s1_ids": 0,
+    "invalid_ground_truth_target_ids": 0,
+    "invalid_or_empty_provenance_rows": 0,
+    "invalid_s1_ids": 0,
+    "phase1_input_rows": {
+      "S1": 2206821,
+      "S2": 5034616,
+      "S3": 5285603
+    },
+    "unique_candidate_ids": 7821094,
+    "unique_s1_with_candidates": 2158760
+  },
+  "method_only_metrics": {
+    "address_token": {
+      "candidate_pairs": 18751321,
+      "candidate_recall": 0.26699313269266395,
+      "full_recall_s1_pct": 0.19136685330110664,
+      "max_candidates_per_s1": 950,
+      "mean_candidates_per_s1": 8.49698321703482,
+      "median_candidates_per_s1": 0.0,
+      "p90_candidates_per_s1": 35.0,
+      "p95_candidates_per_s1": 50.0,
+      "p99_candidates_per_s1": 73.0,
+      "s2_recall": 0.27770731090564565,
+      "s3_recall": 0.25696103120454394
+    },
+    "exact_address": {
+      "candidate_pairs": 769803,
+      "candidate_recall": 0.0826576106274052,
+      "full_recall_s1_pct": 0.006143290327101413,
+      "max_candidates_per_s1": 20,
+      "mean_candidates_per_s1": 0.34882892631527435,
+      "median_candidates_per_s1": 0.0,
+      "p90_candidates_per_s1": 1.0,
+      "p95_candidates_per_s1": 2.0,
+      "p99_candidates_per_s1": 3.0,
+      "s2_recall": 0.12479034789457169,
+      "s3_recall": 0.043207091153650956
+    },
+    "exact_name": {
+      "candidate_pairs": 21760611,
+      "candidate_recall": 0.21847515796901562,
+      "full_recall_s1_pct": 0.02799996544399191,
+      "max_candidates_per_s1": 1042,
+      "mean_candidates_per_s1": 9.860614431347173,
+      "median_candidates_per_s1": 1.0,
+      "p90_candidates_per_s1": 16.0,
+      "p95_candidates_per_s1": 61.0,
+      "p99_candidates_per_s1": 176.0,
+      "s2_recall": 0.2144262848983612,
+      "s3_recall": 0.2222662751923698
+    },
+    "name_country": {
+      "candidate_pairs": 21680763,
+      "candidate_recall": 0.21847515796901562,
+      "full_recall_s1_pct": 0.02799996544399191,
+      "max_candidates_per_s1": 1042,
+      "mean_candidates_per_s1": 9.824432067666567,
+      "median_candidates_per_s1": 1.0,
+      "p90_candidates_per_s1": 15.0,
+      "p95_candidates_per_s1": 61.0,
+      "p99_candidates_per_s1": 176.0,
+      "s2_recall": 0.2144262848983612,
+      "s3_recall": 0.2222662751923698
+    },
+    "numeric_address": {
+      "candidate_pairs": 3082945,
+      "candidate_recall": 0.03656253661614756,
+      "full_recall_s1_pct": 0.02220127530867634,
+      "max_candidates_per_s1": 639,
+      "mean_candidates_per_s1": 1.3970072787960601,
+      "median_candidates_per_s1": 0.0,
+      "p90_candidates_per_s1": 0.0,
+      "p95_candidates_per_s1": 0.0,
+      "p99_candidates_per_s1": 46.0,
+      "s2_recall": 0.036154243304466434,
+      "s3_recall": 0.03694483751298563
+    },
+    "rare_name_token": {
+      "candidate_pairs": 7723344,
+      "candidate_recall": 0.09707182099834193,
+      "full_recall_s1_pct": 0.06768754073529426,
+      "max_candidates_per_s1": 469,
+      "mean_candidates_per_s1": 3.499760062098376,
+      "median_candidates_per_s1": 0.0,
+      "p90_candidates_per_s1": 9.0,
+      "p95_candidates_per_s1": 32.0,
+      "p99_candidates_per_s1": 58.0,
+      "s2_recall": 0.09731323127805007,
+      "s3_recall": 0.0968457791705727
+    },
+    "rare_name_token_pair": {
+      "candidate_pairs": 38426317,
+      "candidate_recall": 0.5129071470137916,
+      "full_recall_s1_pct": 0.31838705992683725,
+      "max_candidates_per_s1": 1474,
+      "mean_candidates_per_s1": 17.41252099739852,
+      "median_candidates_per_s1": 6.0,
+      "p90_candidates_per_s1": 52.0,
+      "p95_candidates_per_s1": 66.0,
+      "p99_candidates_per_s1": 103.0,
+      "s2_recall": 0.513789050792732,
+      "s3_recall": 0.5120813862286697
+    }
+  },
+  "phase1_to_phase2_verification": {
+    "all_string_columns": true,
+    "ids_unique_and_source_prefixed": true,
+    "phase2_loader_schema_validation": "passed",
+    "schema_columns": [
+      "entity_id",
+      "business_name",
+      "business_address",
+      "country",
+      "business_name_normalized",
+      "business_address_normalized",
+      "country_normalized"
+    ],
+    "train_parquet_rows": {
+      "source1": 2206821,
+      "source2": 5034616,
+      "source3": 5285603
+    }
+  },
+  "phase3_handoff_contract": {
+    "columns": [
+      "s1_id",
+      "candidate_id",
+      "candidate_source",
+      "block_methods"
+    ],
+    "phase3_modified": false,
+    "schema": "Parquet, string/string/string/list[string]"
+  },
+  "recall": {
+    "by_candidate_source": {
+      "S2": {
+        "recall": 0.737850601266671,
+        "recovered_pairs": 2725339,
+        "true_pairs": 3693619
+      },
+      "S3": {
+        "recall": 0.7158405129252935,
+        "recovered_pairs": 2823809,
+        "true_pairs": 3944746
+      }
+    },
+    "candidate_recall": 0.726483743576014,
+    "positive_s1_recovery": {
+      "fully_recovered_s1": 1057390,
+      "fully_recovered_s1_pct": 0.5074885749198252,
+      "partially_recovered_s1": 817579,
+      "partially_recovered_s1_pct": 0.3923925908079099,
+      "positive_s1_count": 2083574,
+      "zero_recall_s1": 208605,
+      "zero_recall_s1_pct": 0.10011883427226487
+    },
+    "recovered_true_pairs": 5549148,
+    "singleton_s1_count_excluded_from_recall": 123247,
+    "true_pairs": 7638365
+  },
+  "reproducibility_note": "Candidate generation uses deterministic token/key construction and stable pair hashing for bounded partition merges. A second full real-train rerun was not performed in this iteration.",
+  "runtime_seconds": 354.3,
+  "schema_version": 1,
+  "split": "train"
+}

@@ -5,8 +5,11 @@ from dataclasses import dataclass
 import polars as pl
 
 from .blocks import (
+    address_token_key_frame,
     exact_key_frame,
     name_country_key_frame,
+    name_token_pair_key_frame,
+    numeric_address_key_frame,
     profile_key_blocks,
     source2_and_source3,
     token_key_frame,
@@ -16,12 +19,16 @@ from .deduplicate import deduplicate_with_provenance
 from .loader import EntityTables
 
 PAIR_COLUMNS = ["s1_id", "candidate_id", "candidate_source", "block_methods"]
-METHODS = ("exact_name", "name_country", "exact_address", "rare_name_token")
+METHODS = (
+    "exact_name", "name_country", "exact_address", "rare_name_token",
+    "rare_name_token_pair", "address_token", "numeric_address",
+)
 
 
 @dataclass(frozen=True)
 class CandidateGeneration:
     pairs: pl.LazyFrame
+    raw_pairs_by_method: dict[str, pl.LazyFrame]
     block_statistics: dict[str, dict]
     strategy_counts: dict[str, int]
     configuration: dict
@@ -89,6 +96,22 @@ def _rare_token_pairs(
     )
 
 
+def _key_pairs(left_keys, right_keys, shared_keys, targets, method: str, pair_cap: int) -> pl.LazyFrame:
+    """Join entities on shared, frequency-capped keys with explicit provenance."""
+    eligible = shared_keys.filter(pl.col("pair_estimate") <= pair_cap).select("key")
+    left = left_keys.join(eligible, on="key", how="inner").select(
+        pl.col("entity_id").alias("s1_id"), "key",
+    )
+    right = right_keys.join(eligible, on="key", how="inner").join(
+        targets.select(pl.col("candidate_id").alias("entity_id"), "candidate_source"),
+        on="entity_id", how="inner",
+    ).select(pl.col("entity_id").alias("candidate_id"), "candidate_source", "key")
+    return left.join(right, on="key", how="inner").select(
+        "s1_id", "candidate_id", "candidate_source",
+        pl.lit([method], dtype=pl.List(pl.String)).alias("block_methods"),
+    )
+
+
 def generate_candidates(
     tables: EntityTables,
     token_min_length: int = NAME_TOKEN_MIN_LENGTH,
@@ -124,13 +147,41 @@ def generate_candidates(
         "rare_name_token", left_tokens, right_tokens, pair_cap=token_pair_cap,
     )
 
+    left_name_pairs = name_token_pair_key_frame(s1, "s1_id", min_length=3)
+    right_name_pairs = name_token_pair_key_frame(targets, "candidate_id", min_length=3)
+    shared_name_pairs, blocks["rare_name_token_pair"] = profile_key_blocks(
+        "rare_name_token_pair", left_name_pairs, right_name_pairs, pair_cap=1_000,
+    )
+
+    left_address_tokens = address_token_key_frame(s1, "s1_id", min_length=2)
+    right_address_tokens = address_token_key_frame(targets, "candidate_id", min_length=2)
+    shared_address_tokens, blocks["address_token"] = profile_key_blocks(
+        "address_token", left_address_tokens, right_address_tokens, pair_cap=1_000,
+    )
+
+    left_numeric_address = numeric_address_key_frame(s1, "s1_id", min_length=2)
+    right_numeric_address = numeric_address_key_frame(targets, "candidate_id", min_length=2)
+    shared_numeric_address, blocks["numeric_address"] = profile_key_blocks(
+        "numeric_address", left_numeric_address, right_numeric_address, pair_cap=1_000,
+    )
+
     # Country-exact name is a strict subset of exact-name pairs. It is recorded
     # as provenance on those pairs, avoiding a redundant second large join.
-    raw_pairs = pl.concat([
-        _name_pairs(s1, targets),
-        _address_pairs(s1, targets),
-        _rare_token_pairs(s1, targets, left_tokens, right_tokens, shared_tokens, token_pair_cap),
-    ], how="vertical")
+    raw_pairs_by_method = {
+        "exact_name": _name_pairs(s1, targets),
+        "exact_address": _address_pairs(s1, targets),
+        "rare_name_token": _rare_token_pairs(s1, targets, left_tokens, right_tokens, shared_tokens, token_pair_cap),
+        "rare_name_token_pair": _key_pairs(
+            left_name_pairs, right_name_pairs, shared_name_pairs, targets, "rare_name_token_pair", 1_000,
+        ),
+        "address_token": _key_pairs(
+            left_address_tokens, right_address_tokens, shared_address_tokens, targets, "address_token", 1_000,
+        ),
+        "numeric_address": _key_pairs(
+            left_numeric_address, right_numeric_address, shared_numeric_address, targets, "numeric_address", 1_000,
+        ),
+    }
+    raw_pairs = pl.concat(list(raw_pairs_by_method.values()), how="vertical")
     pairs = deduplicate_with_provenance(raw_pairs).select(PAIR_COLUMNS)
 
     # Counts are emitted by the execution stage after the unique-pair artifact
@@ -141,6 +192,12 @@ def generate_candidates(
     configuration = {
         "name_token_min_length": token_min_length,
         "name_token_max_pair_estimate": token_pair_cap,
+        "name_token_pair_min_length": 3,
+        "name_token_pair_max_pair_estimate": 1_000,
+        "address_token_min_length": 2,
+        "address_token_max_pair_estimate": 1_000,
+        "numeric_address_min_length": 2,
+        "numeric_address_max_pair_estimate": 1_000,
         "exact_name_country": "provenance subset of exact_name; no redundant candidate join",
     }
-    return CandidateGeneration(pairs, blocks, strategy_counts, configuration)
+    return CandidateGeneration(pairs, raw_pairs_by_method, blocks, strategy_counts, configuration)

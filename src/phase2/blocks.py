@@ -73,6 +73,49 @@ def token_key_frame(
     return tokens.select("entity_id", "key")
 
 
+def address_token_key_frame(frame: pl.LazyFrame, id_column: str, min_length: int = 2) -> pl.LazyFrame:
+    """Tokenize normalized addresses for conservative shared-token blocking."""
+    return (
+        frame.select(pl.col(id_column).alias("entity_id"), pl.col("business_address_normalized"))
+        .filter(pl.col("business_address_normalized") != "")
+        .with_columns(pl.col("business_address_normalized").str.split(" ").list.unique().alias("key"))
+        .explode("key", empty_as_null=True)
+        .filter(pl.col("key").str.len_chars() >= min_length)
+        .select("entity_id", "key")
+    )
+
+
+def numeric_address_key_frame(frame: pl.LazyFrame, id_column: str, min_length: int = 2) -> pl.LazyFrame:
+    """Extract distinct numeric address components as blocking keys."""
+    return (
+        frame.select(pl.col(id_column).alias("entity_id"), pl.col("business_address_normalized"))
+        .filter(pl.col("business_address_normalized") != "")
+        .with_columns(pl.col("business_address_normalized").str.extract_all(r"\d+").list.unique().alias("key"))
+        .explode("key", empty_as_null=True)
+        .filter(pl.col("key").str.len_chars() >= min_length)
+        .select("entity_id", "key")
+    )
+
+
+def name_token_pair_key_frame(frame: pl.LazyFrame, id_column: str, min_length: int = 3) -> pl.LazyFrame:
+    """Build order-invariant keys from each pair of distinct name tokens."""
+    tokens = (
+        frame.select(pl.col(id_column).alias("entity_id"), pl.col("business_name_normalized"))
+        .filter(pl.col("business_name_normalized") != "")
+        .with_columns(pl.col("business_name_normalized").str.split(" ").list.unique().alias("tokens"))
+        .explode("tokens", empty_as_null=True)
+        .filter(pl.col("tokens").str.len_chars() >= min_length)
+        .select("entity_id", pl.col("tokens").alias("token"))
+    )
+    first = tokens.select("entity_id", pl.col("token").alias("token_a"))
+    second = tokens.select("entity_id", pl.col("token").alias("token_b"))
+    return (
+        first.join(second, on="entity_id", how="inner")
+        .filter(pl.col("token_a") < pl.col("token_b"))
+        .select("entity_id", pl.concat_str(["token_a", "token_b"], separator="␟").alias("key"))
+    )
+
+
 def profile_key_blocks(
     method: str,
     left_keys: pl.LazyFrame,
@@ -110,6 +153,7 @@ def profile_key_blocks(
     summary = shared.select(*summary_exprs).collect(engine="streaming").row(0, named=True)
     shared_count = summary.pop("shared_key_count")
     summary["method"] = method
+    summary["shared_key_count"] = shared_count
     summary["unique_key_count"] = left.height + right.height - shared_count
     summary["record_count"] = left["s1_count"].sum() + right["target_count"].sum()
     if pair_cap is not None:

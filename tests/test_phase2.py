@@ -61,9 +61,31 @@ def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tm
     assert all(not value.startswith("S1-") for value in pairs["candidate_id"].to_list())
     acme = pairs.filter(pl.col("s1_id") == "S1-1")
     assert set(acme["candidate_id"].to_list()) == {"S2-1", "S2-2", "S3-1"}
-    assert acme.filter(pl.col("candidate_id") == "S2-1")["block_methods"].to_list()[0] == ["exact_name", "name_country"]
+    assert acme.filter(pl.col("candidate_id") == "S2-1")["block_methods"].to_list()[0] == [
+        "exact_name", "name_country", "rare_name_token_pair",
+    ]
     assert "exact_address" in pairs.filter(pl.col("candidate_id") == "S2-2")["block_methods"].to_list()[0]
     assert pairs.filter(pl.col("s1_id") == "S1-2").is_empty()
+
+
+def test_new_name_pair_and_address_keys_emit_valid_provenance(tmp_path):
+    _write_tables(tmp_path / "normalized")
+    target_path = tmp_path / "normalized" / "train" / "train_source2.parquet"
+    additions = pl.DataFrame([
+        _entity("S2-4", "group acme", "99 avenue", "us"),
+        _entity("S2-5", "unrelated", "building 12 lane", "us"),
+    ], schema=ENTITY_COLUMNS)
+    pl.concat([pl.read_parquet(target_path), additions]).write_parquet(target_path)
+    tables = load_entity_tables("train", tmp_path / "normalized")
+    pairs = generate_candidates(tables, token_pair_cap=1).pairs.collect()
+
+    reordered = pairs.filter((pl.col("s1_id") == "S1-1") & (pl.col("candidate_id") == "S2-4"))
+    assert reordered.height == 1
+    assert "rare_name_token_pair" in reordered["block_methods"].item()
+
+    address = pairs.filter((pl.col("s1_id") == "S1-1") & (pl.col("candidate_id") == "S2-5"))
+    assert address.height == 1
+    assert {"address_token", "numeric_address"}.issubset(set(address["block_methods"].item()))
 
 
 def test_candidate_tsv_contract_and_volume_includes_zero_candidates(tmp_path):
@@ -95,7 +117,7 @@ def test_ground_truth_recall_excludes_singletons_and_reports_partial_recovery(tm
     assert result["positive_s1_recovery"]["partially_recovered_s1"] == 1
     assert result["singleton_s1_count_excluded_from_recall"] == 1
     stages = contribution_by_method(pairs, labels)["cumulative"]
-    assert len(stages) == 4
+    assert len(stages) == 7
     assert stages[0]["candidate_recall"] == 2 / 3
     assert stages[1]["candidate_recall"] == 2 / 3
 

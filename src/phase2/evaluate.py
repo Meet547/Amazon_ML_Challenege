@@ -68,7 +68,10 @@ def evaluate_recall(pairs: pl.LazyFrame, labels: pl.DataFrame) -> dict:
 
 def contribution_by_method(pairs: pl.LazyFrame, labels: pl.DataFrame) -> dict:
     """Compute cumulative unique-pair and truth recall as methods are added."""
-    order = ["exact_name", "name_country", "exact_address", "rare_name_token"]
+    order = [
+        "exact_name", "name_country", "exact_address", "rare_name_token",
+        "rare_name_token_pair", "address_token", "numeric_address",
+    ]
     rows = []
     active = []
     for method in order:
