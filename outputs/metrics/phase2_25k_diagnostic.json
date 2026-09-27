@@ -1,0 +1,2082 @@
+{
+  "actual_method_coverage_note": "Method hit counts are independent and overlap: one true pair may be retrieved by several methods. Unique candidate pairs attributed likewise overlap across methods; do not sum method rows.",
+  "actual_method_coverage_over_sample_ground_truth_pairs": {
+    "address_token": {
+      "ground_truth_pairs_recovered_by_method": 23665,
+      "pct_of_sample_ground_truth_pairs": 26.800375986681917,
+      "unique_candidate_pairs_attributed": 213564
+    },
+    "exact_address": {
+      "ground_truth_pairs_recovered_by_method": 7254,
+      "pct_of_sample_ground_truth_pairs": 8.215082501896921,
+      "unique_candidate_pairs_attributed": 8824
+    },
+    "exact_name": {
+      "ground_truth_pairs_recovered_by_method": 19321,
+      "pct_of_sample_ground_truth_pairs": 21.88083940159228,
+      "unique_candidate_pairs_attributed": 247964
+    },
+    "name_core_exact": {
+      "ground_truth_pairs_recovered_by_method": 31128,
+      "pct_of_sample_ground_truth_pairs": 35.25214889978596,
+      "unique_candidate_pairs_attributed": 82178
+    },
+    "name_country": {
+      "ground_truth_pairs_recovered_by_method": 19321,
+      "pct_of_sample_ground_truth_pairs": 21.88083940159228,
+      "unique_candidate_pairs_attributed": 247075
+    },
+    "name_sorted_tokens": {
+      "ground_truth_pairs_recovered_by_method": 34064,
+      "pct_of_sample_ground_truth_pairs": 38.57713955674341,
+      "unique_candidate_pairs_attributed": 94409
+    },
+    "numeric_address": {
+      "ground_truth_pairs_recovered_by_method": 3248,
+      "pct_of_sample_ground_truth_pairs": 3.6783275387594703,
+      "unique_candidate_pairs_attributed": 35735
+    },
+    "rare_name_token": {
+      "ground_truth_pairs_recovered_by_method": 8464,
+      "pct_of_sample_ground_truth_pairs": 9.585395408885516,
+      "unique_candidate_pairs_attributed": 88093
+    },
+    "rare_name_token_pair": {
+      "ground_truth_pairs_recovered_by_method": 45617,
+      "pct_of_sample_ground_truth_pairs": 51.66079659347006,
+      "unique_candidate_pairs_attributed": 441228
+    }
+  },
+  "baseline": {
+    "candidate_volume": {
+      "max": 723,
+      "mean": 38.07552,
+      "median": 27.0,
+      "p90": 83.0,
+      "p95": 106.0,
+      "p99": 189.0,
+      "total_candidate_pairs": 951888,
+      "zero_candidate_s1": 156
+    },
+    "full_s1_recall": 0.5232148843446195,
+    "fully_recovered_positive_s1": 12486,
+    "ground_truth_pairs": 88301,
+    "max_rss_gib": 5.605,
+    "missed_true_pairs": 21835,
+    "pair_recall": 0.7527208072388761,
+    "positive_s1_count": 23864,
+    "recovered_true_pairs": 66466,
+    "runtime_seconds": 112.544,
+    "s2": {
+      "recall": 0.762406191369606,
+      "recovered_pairs": 32509,
+      "true_pairs": 42640
+    },
+    "s3": {
+      "recall": 0.7436762225969646,
+      "recovered_pairs": 33957,
+      "true_pairs": 45661
+    }
+  },
+  "block_statistics": {
+    "address_token": {
+      "blocks_over_1000_records": 7139,
+      "blocks_over_1m_candidate_pairs": 3150,
+      "eligible_estimated_candidate_pairs": 19659369,
+      "eligible_shared_key_count": 397475,
+      "estimated_candidate_pairs_before_dedup": 2022800931,
+      "max_block_size": 2189123,
+      "mean_block_size": 193.8951302357685,
+      "median_block_size": 7.0,
+      "method": "address_token",
+      "p90_block_size": 79.0,
+      "p95_block_size": 228.0,
+      "p99_block_size": 1779.0,
+      "pair_cap": 1000,
+      "record_count": 87843556,
+      "shared_key_count": 440432,
+      "unique_key_count": 742357
+    },
+    "exact_address": {
+      "blocks_over_1000_records": 0,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 769803,
+      "eligible_shared_key_count": 487477,
+      "estimated_candidate_pairs_before_dedup": 769803,
+      "max_block_size": 32,
+      "mean_block_size": 2.4207357475327043,
+      "median_block_size": 2.0,
+      "method": "exact_address",
+      "p90_block_size": 3.0,
+      "p95_block_size": 4.0,
+      "p99_block_size": 7.0,
+      "pair_cap": null,
+      "record_count": 12182157,
+      "shared_key_count": 487477,
+      "unique_key_count": 10490205
+    },
+    "exact_name": {
+      "blocks_over_1000_records": 1,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 21760611,
+      "eligible_shared_key_count": 904557,
+      "estimated_candidate_pairs_before_dedup": 21760611,
+      "max_block_size": 1043,
+      "mean_block_size": 4.017803189848733,
+      "median_block_size": 2.0,
+      "method": "exact_name",
+      "p90_block_size": 5.0,
+      "p95_block_size": 9.0,
+      "p99_block_size": 33.0,
+      "pair_cap": null,
+      "record_count": 12527040,
+      "shared_key_count": 904557,
+      "unique_key_count": 8277618
+    },
+    "name_core_exact": {
+      "blocks_over_1000_records": 28,
+      "blocks_over_1m_candidate_pairs": 0,
+      "eligible_estimated_candidate_pairs": 7201651,
+      "eligible_shared_key_count": 1123121,
+      "estimated_candidate_pairs_before_dedup": 80897955,
+      "max_block_size": 1936,
+      "mean_block_size": 5.305575886795655,
+      "median_block_size": 3.0,
+      "method": "name_core_exact",
+      "p90_block_size": 7.0,
+      "p95_block_size": 11.0,
+      "p99_block_size": 35.0,
+      "pair_cap": 1000,
+      "record_count": 12506418,
+      "shared_key_count": 1131264,
+      "unique_key_count": 6421376
+    },
+    "name_sorted_tokens": {
+      "blocks_over_1000_records": 116,
+      "blocks_over_1m_candidate_pairs": 6,
+      "eligible_estimated_candidate_pairs": 8334654,
+      "eligible_shared_key_count": 1090737,
+      "estimated_candidate_pairs_before_dedup": 157195943,
+      "max_block_size": 10157,
+      "mean_block_size": 6.111913807005726,
+      "median_block_size": 3.0,
+      "method": "name_sorted_tokens",
+      "p90_block_size": 8.0,
+      "p95_block_size": 12.0,
+      "p99_block_size": 51.0,
+      "pair_cap": 1000,
+      "record_count": 12506418,
+      "shared_key_count": 1100043,
+      "unique_key_count": 5645012
+    },
+    "numeric_address": {
+      "blocks_over_1000_records": 1693,
+      "blocks_over_1m_candidate_pairs": 757,
+      "eligible_estimated_candidate_pairs": 3083657,
+      "eligible_shared_key_count": 31905,
+      "estimated_candidate_pairs_before_dedup": 320430668,
+      "max_block_size": 173714,
+      "mean_block_size": 326.69819903024705,
+      "median_block_size": 18.0,
+      "method": "numeric_address",
+      "p90_block_size": 352.0,
+      "p95_block_size": 749.0,
+      "p99_block_size": 5014.0,
+      "pair_cap": 1000,
+      "record_count": 14422784,
+      "shared_key_count": 43310,
+      "unique_key_count": 91273
+    },
+    "rare_name_token": {
+      "blocks_over_1000_records": 1981,
+      "blocks_over_1m_candidate_pairs": 997,
+      "eligible_estimated_candidate_pairs": 7783602,
+      "eligible_shared_key_count": 63536,
+      "estimated_candidate_pairs_before_dedup": 63984367,
+      "max_block_size": 1724615,
+      "mean_block_size": 316.90829400689535,
+      "median_block_size": 22.0,
+      "method": "rare_name_token",
+      "p90_block_size": 190.0,
+      "p95_block_size": 327.0,
+      "p99_block_size": 2877.0,
+      "pair_cap": 1000,
+      "record_count": 30810414,
+      "shared_key_count": 81794,
+      "unique_key_count": 1373552
+    },
+    "rare_name_token_pair": {
+      "blocks_over_1000_records": 3274,
+      "blocks_over_1m_candidate_pairs": 1361,
+      "eligible_estimated_candidate_pairs": 50214557,
+      "eligible_shared_key_count": 1873014,
+      "estimated_candidate_pairs_before_dedup": 884800386,
+      "max_block_size": 1145937,
+      "mean_block_size": 21.668255741736548,
+      "median_block_size": 5.0,
+      "method": "rare_name_token_pair",
+      "p90_block_size": 21.0,
+      "p95_block_size": 40.0,
+      "p99_block_size": 222.0,
+      "pair_cap": 1000,
+      "record_count": 55695690,
+      "shared_key_count": 1922502,
+      "unique_key_count": 7770985
+    }
+  },
+  "blocking_coverage": [
+    {
+      "missed_pairs_with_signal": 13869,
+      "pct_of_missed": 63.51728875658347,
+      "signal": "shared exact name token"
+    },
+    {
+      "missed_pairs_with_signal": 12085,
+      "pct_of_missed": 55.346920082436455,
+      "signal": "shared rare name token (>=5 chars, before frequency cap)"
+    },
+    {
+      "missed_pairs_with_signal": 9801,
+      "pct_of_missed": 44.886649874055415,
+      "signal": "shared name token pair"
+    },
+    {
+      "missed_pairs_with_signal": 2828,
+      "pct_of_missed": 12.951683077627662,
+      "signal": "shared sorted informative tokens"
+    },
+    {
+      "missed_pairs_with_signal": 2121,
+      "pct_of_missed": 9.713762308220746,
+      "signal": "shared core-name representation"
+    },
+    {
+      "missed_pairs_with_signal": 17444,
+      "pct_of_missed": 79.89008472635676,
+      "signal": "shared name 3-grams"
+    },
+    {
+      "missed_pairs_with_signal": 17280,
+      "pct_of_missed": 79.138997023128,
+      "signal": "shared name 4-grams"
+    },
+    {
+      "missed_pairs_with_signal": 20780,
+      "pct_of_missed": 95.1683077627662,
+      "signal": "shared address token"
+    },
+    {
+      "missed_pairs_with_signal": 20524,
+      "pct_of_missed": 93.99587817723838,
+      "signal": "shared address token pair"
+    },
+    {
+      "missed_pairs_with_signal": 15852,
+      "pct_of_missed": 72.59903824135561,
+      "signal": "shared numeric address component"
+    },
+    {
+      "missed_pairs_with_signal": 293,
+      "pct_of_missed": 1.3418822990611403,
+      "signal": "shared postal/PIN-like component"
+    },
+    {
+      "missed_pairs_with_signal": 3777,
+      "pct_of_missed": 17.297916189603846,
+      "signal": "cross-script overlap"
+    }
+  ],
+  "categories_overlap": true,
+  "conclusion": {
+    "answers": {
+      "avoid": "Do not infer that shared n-grams will retrieve 79% of misses selectively; this experiment measured only overlap, not candidate volume. Do not spend compute on postal/PIN-only blocking from this evidence (293 misses, 1.34%).",
+      "dominant_causes": "Address token/address variation (95.17%), same-script character variation (60.00%), weak/no lexical overlap (20.05%), and cross-script name pairs (17.30%) among missed pairs; categories overlap.",
+      "inefficient_or_redundant": "name_country adds no retrieval beyond exact_name; numeric_address recovered 3,248 sample truth pairs for 35,735 method-attributed candidates, with overlapping method attribution. Address-token/pair methods are productive but their 1,000-pair cap excludes many true pairs.",
+      "largest_missing_retrieval_signals": "Address-token pair overlap (20,524 misses, 93.996%), shared name 3-grams (17,444, 79.890%), and shared name 4-grams (17,280, 79.139%). These are coverage ceilings, not measured candidate recall or selectivity.",
+      "test_first": "A measured cap-aware address-token composite/key strategy, while tracking candidate growth and actual precision; its shared-token-pair miss coverage is the largest. Then test bounded character retrieval, because raw n-gram overlap is common but not yet shown selective."
+    },
+    "do_not_waste_compute": "Do not pursue raw 3-/4-gram overlap as if it were selective: 79.89%/79.14% of misses share at least one n-gram, but this diagnostic did not measure candidate volume or precision. Postal/PIN-like digit overlap is only 293 misses (1.34%).",
+    "dominant_causes_by_category": [
+      {
+        "count": 20781,
+        "failure_type": "address variation",
+        "overlapping_categories": true,
+        "pct_of_missed": 95.17288756583467
+      },
+      {
+        "count": 13100,
+        "failure_type": "spelling/character variation",
+        "overlapping_categories": true,
+        "pct_of_missed": 59.99542019693153
+      },
+      {
+        "count": 4379,
+        "failure_type": "weak/no lexical overlap",
+        "overlapping_categories": true,
+        "pct_of_missed": 20.054957636821616
+      },
+      {
+        "count": 3777,
+        "failure_type": "cross-script",
+        "overlapping_categories": true,
+        "pct_of_missed": 17.297916189603846
+      },
+      {
+        "count": 3330,
+        "failure_type": "partial token overlap",
+        "overlapping_categories": true,
+        "pct_of_missed": 15.250744217998626
+      },
+      {
+        "count": 2121,
+        "failure_type": "legal-form variation",
+        "overlapping_categories": true,
+        "pct_of_missed": 9.713762308220746
+      }
+    ],
+    "inefficient_or_redundant_methods": {
+      "address_token": "High yield among existing methods but 20,780 missed pairs (95.17%) still had at least one eligible-length shared address-token representation; the production frequency cap excluded these missed pairs.",
+      "name_country": "Fully redundant as a retrieval method: same-country exact-name pairs are a provenance subset of exact_name.",
+      "name_token_pair": "High coverage; 9,801 misses (44.89%) share a pair key, all absent because the production key cap excludes shared keys.",
+      "numeric_address": "Attributed 35,735 unique candidate pairs and recovered 3,248 sample true pairs (3.68% of all sample truths); less productive than its signal miss count suggests, and method attribution overlaps other blocks."
+    },
+    "largest_measured_missed_pair_signals": [
+      {
+        "missed_pairs_with_signal": 20524,
+        "pct_of_missed": 93.99587817723838,
+        "signal": "shared_address_token_pair"
+      },
+      {
+        "missed_pairs_with_signal": 17444,
+        "pct_of_missed": 79.89008472635676,
+        "signal": "shared_name_3grams"
+      },
+      {
+        "missed_pairs_with_signal": 17280,
+        "pct_of_missed": 79.138997023128,
+        "signal": "shared_name_4grams"
+      },
+      {
+        "missed_pairs_with_signal": 12085,
+        "pct_of_missed": 55.346920082436455,
+        "signal": "shared_rare_name_token_unfiltered"
+      },
+      {
+        "missed_pairs_with_signal": 9801,
+        "pct_of_missed": 44.886649874055415,
+        "signal": "shared_name_token_pair"
+      }
+    ],
+    "test_first": "Test cap-aware selective address-token combinations and candidate-volume/selectivity tradeoffs first; the measured missed-pair coverage is highest (20,524 / 93.996%). Treat this strictly as an opportunity signal, not expected recall."
+  },
+  "current_method_failure_analysis": {
+    "address_token": {
+      "missed_pairs_with_shared_method_key": 20780,
+      "pct_of_missed": 95.1683077627662,
+      "reason": "Shared length>=2 address-token key exists; absent candidate means all shared keys failed the production 1,000 pair cap."
+    },
+    "name_core_exact": {
+      "missed_pairs_with_shared_method_key": 2121,
+      "pct_of_missed": 9.713762308220746,
+      "reason": "Exact core-name key exists; absent candidate means the shared key failed the production 1,000 pair cap."
+    },
+    "name_sorted_tokens": {
+      "missed_pairs_with_shared_method_key": 2828,
+      "pct_of_missed": 12.951683077627662,
+      "reason": "Exact sorted informative-token key exists; absent candidate means the shared key failed the production 1,000 pair cap."
+    },
+    "numeric_address": {
+      "missed_pairs_with_shared_method_key": 15852,
+      "pct_of_missed": 72.59903824135561,
+      "reason": "Shared length>=2 numeric component exists; absent candidate means all shared keys failed the production 1,000 pair cap."
+    },
+    "rare_name_token": {
+      "missed_pairs_with_shared_method_key": 12085,
+      "pct_of_missed": 55.346920082436455,
+      "reason": "Shared >=5-character token means the minimum token key exists; absent candidate means all shared keys failed the production 1,000 pair cap."
+    },
+    "rare_name_token_pair": {
+      "missed_pairs_with_shared_method_key": 9801,
+      "pct_of_missed": 44.886649874055415,
+      "reason": "Shared length>=3 token-pair key exists; absent candidate means all shared pair keys failed the production 1,000 pair cap."
+    }
+  },
+  "disk_safety": {
+    "diagnostic_json_bytes": 78484,
+    "free_space_after_run_bytes": 8197787648,
+    "free_space_after_run_gib": 7.635,
+    "free_space_before_run": "about 8.7 GB (measured with df before diagnostic execution)",
+    "persisted_candidate_artifact": false,
+    "persisted_outputs": [
+      "outputs/metrics/phase2_25k_diagnostic.json",
+      "outputs/metrics/phase2_25k_sample_ids.txt"
+    ],
+    "sample_id_file_bytes": 322262
+  },
+  "experiment": "Phase 2.3 25K diagnostic; read-only source audit; full train targets; production frequency populations.",
+  "failure_categories": [
+    {
+      "count": 20781,
+      "failure_type": "address variation",
+      "overlapping_categories": true,
+      "pct_of_missed": 95.17288756583467
+    },
+    {
+      "count": 13100,
+      "failure_type": "spelling/character variation",
+      "overlapping_categories": true,
+      "pct_of_missed": 59.99542019693153
+    },
+    {
+      "count": 4379,
+      "failure_type": "weak/no lexical overlap",
+      "overlapping_categories": true,
+      "pct_of_missed": 20.054957636821616
+    },
+    {
+      "count": 3777,
+      "failure_type": "cross-script",
+      "overlapping_categories": true,
+      "pct_of_missed": 17.297916189603846
+    },
+    {
+      "count": 3330,
+      "failure_type": "partial token overlap",
+      "overlapping_categories": true,
+      "pct_of_missed": 15.250744217998626
+    },
+    {
+      "count": 2121,
+      "failure_type": "legal-form variation",
+      "overlapping_categories": true,
+      "pct_of_missed": 9.713762308220746
+    },
+    {
+      "count": 1048,
+      "failure_type": "missing address",
+      "overlapping_categories": true,
+      "pct_of_missed": 4.799633615754523
+    },
+    {
+      "count": 967,
+      "failure_type": "business abbreviation",
+      "overlapping_categories": true,
+      "pct_of_missed": 4.42866956720861
+    },
+    {
+      "count": 275,
+      "failure_type": "token reordering",
+      "overlapping_categories": true,
+      "pct_of_missed": 1.2594458438287153
+    }
+  ],
+  "failure_category_rules": {
+    "address variation": "both addresses nonempty, not exact, and at least one normalized token (length>=2) or numeric component (length>=2) shared.",
+    "business abbreviation": "same-script names have differing tokens where one is a >=2-character prefix of the other and at least half as long.",
+    "categories": "Multi-label, intentionally overlapping; percentages use all missed true pairs as denominator.",
+    "cross-script": "Latin alphabetic character(s) on one name and non-Latin alphabetic character(s) on the other.",
+    "legal-form variation": "names differ but core representation after removing configured legal-form tokens is exactly equal.",
+    "missing address": "normalized address empty on either side.",
+    "partial token overlap": "shared tokens without exact core/reorder/abbreviation/high edit similarity.",
+    "spelling/character variation": "same-script differing names (excluding exact/core/order cases) with SequenceMatcher ratio>=0.72 or shared 3-gram and token overlap>=0.5.",
+    "token reordering": "same distinct name-token sets in different order.",
+    "weak/no lexical overlap": "no exact name token and no shared name 3-gram; can overlap cross-script."
+  },
+  "integrity": {
+    "all_candidate_s1_ids_in_sample": true,
+    "all_sample_ids_exist_in_phase1": true,
+    "all_sample_ids_unique": true,
+    "all_true_candidate_ids_exist_in_targets": true,
+    "unique_candidate_pairs": true
+  },
+  "interpretation_limits": [
+    "Intentionally enriched sample: metrics describe these 25,000 S1s only and are not an unbiased full-train recall estimate.",
+    "Actual production caps are profiled over all S1 and target records. Candidate joins are restricted to selected S1 IDs.",
+    "Failure-category rules are deterministic heuristic labels and can overlap. N-gram overlap alone is not evidence that a high-recall character block would be selective.",
+    "Postal/PIN-like values are digit runs of length 5 or 6; this is only a diagnostic proxy, not a validated postal-code field.",
+    "The 20K random subset and 5K diagnostic subset are separately reported. The combined sample metrics are enriched by construction."
+  ],
+  "missed_pair_current_blocking_method_failure": "Every missed pair was absent from all eight actual production-method candidate outputs. Shared unfiltered token/gram/address signals below indicate whether a representation existed; frequency caps and minimum token length determine whether the current method retained the corresponding key. Exact-name and exact-address misses have no equal normalized key by definition.",
+  "missed_pair_relationships": {
+    "country_different": {
+      "count": 0,
+      "pct_of_missed": 0.0
+    },
+    "country_missing": {
+      "count": 0,
+      "pct_of_missed": 0.0
+    },
+    "country_same": {
+      "count": 21835,
+      "pct_of_missed": 100.0
+    },
+    "cross_script_overlap": {
+      "count": 3777,
+      "pct_of_missed": 17.297916189603846
+    },
+    "exact_normalized_address": {
+      "count": 0,
+      "pct_of_missed": 0.0
+    },
+    "exact_normalized_name": {
+      "count": 0,
+      "pct_of_missed": 0.0
+    },
+    "shared_address_token": {
+      "count": 20780,
+      "pct_of_missed": 95.1683077627662
+    },
+    "shared_address_token_pair": {
+      "count": 20524,
+      "pct_of_missed": 93.99587817723838
+    },
+    "shared_exact_name_token": {
+      "count": 13869,
+      "pct_of_missed": 63.51728875658347
+    },
+    "shared_name_3grams": {
+      "count": 17444,
+      "pct_of_missed": 79.89008472635676
+    },
+    "shared_name_4grams": {
+      "count": 17280,
+      "pct_of_missed": 79.138997023128
+    },
+    "shared_name_token_pair": {
+      "count": 9801,
+      "pct_of_missed": 44.886649874055415
+    },
+    "shared_numeric_address_component": {
+      "count": 15852,
+      "pct_of_missed": 72.59903824135561
+    },
+    "shared_postal_pin_component": {
+      "count": 293,
+      "pct_of_missed": 1.3418822990611403
+    },
+    "shared_rare_name_token_unfiltered": {
+      "count": 12085,
+      "pct_of_missed": 55.346920082436455
+    },
+    "token_reordering": {
+      "count": 550,
+      "pct_of_missed": 2.5188916876574305
+    }
+  },
+  "representative_misses": [
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_sorted_informative_tokens",
+        "shared_core_name_representation",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "united academy inc",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "legal-form variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name keys are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "united academy",
+      "s1_id": "S1-760490489",
+      "shared_address_tokens": [
+        "creek",
+        "drive",
+        "hidden"
+      ],
+      "shared_name_tokens": [
+        "academy",
+        "united"
+      ],
+      "shared_numeric_components": [
+        "2363"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-758655689",
+      "why_current_blocker_missed": [
+        "Core-name signal exists, but the capped core-name method did not emit the pair (key cap/frequency or signature mismatch); verify by cap diagnostic.",
+        "Sorted-token signature exists, but the capped sorted-token method did not emit the pair (key cap/frequency or signature mismatch).",
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "country_same"
+      ],
+      "candidate_name": "smithsmith com",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "business abbreviation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "eagle smith and smith",
+      "s1_id": "S1-905271595",
+      "shared_address_tokens": [
+        "234",
+        "hotchkiss",
+        "wa"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [
+        "234"
+      ],
+      "source": "S2",
+      "true_candidate_id": "S2-797595716",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_sorted_informative_tokens",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "token_reordering",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "corner studio hair",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "token reordering"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "corner hair studio",
+      "s1_id": "S1-942557495",
+      "shared_address_tokens": [
+        "brook",
+        "ma",
+        "milton",
+        "road"
+      ],
+      "shared_name_tokens": [
+        "corner",
+        "hair",
+        "studio"
+      ],
+      "shared_numeric_components": [],
+      "source": "S2",
+      "true_candidate_id": "S2-179890415",
+      "why_current_blocker_missed": [
+        "Sorted-token signature exists, but the capped sorted-token method did not emit the pair (key cap/frequency or signature mismatch).",
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "country_same"
+      ],
+      "candidate_name": "draylchorizon com",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "spelling/character variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "drayic horizon inc",
+      "s1_id": "S1-479419869",
+      "shared_address_tokens": [
+        "1102",
+        "22nd",
+        "fargo",
+        "nd"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [
+        "1102",
+        "22"
+      ],
+      "source": "S2",
+      "true_candidate_id": "S2-563838387",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "cross_script_overlap",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "hitech infrastructure ప్రైవేట్ లిమిటెడ్",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "cross-script",
+        "address variation",
+        "partial token overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "hitech infrastructure private limited",
+      "s1_id": "S1-195220432",
+      "shared_address_tokens": [
+        "293",
+        "303a",
+        "82",
+        "banjara",
+        "hills",
+        "hyderabad",
+        "no"
+      ],
+      "shared_name_tokens": [
+        "hitech",
+        "infrastructure"
+      ],
+      "shared_numeric_components": [
+        "293",
+        "303",
+        "82"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-299252320",
+      "why_current_blocker_missed": [
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active.",
+        "Names cross scripts; exact/token signatures cannot bridge transliteration."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "country_same"
+      ],
+      "candidate_name": "gegoins com",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "goins and eckman giant llc",
+      "s1_id": "S1-702307251",
+      "shared_address_tokens": [
+        "105",
+        "dwight",
+        "sixth",
+        "street"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [
+        "105"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-888013685",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "best private limited center",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "spelling/character variation",
+        "partial token overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "best architects private limited",
+      "s1_id": "S1-858896432",
+      "shared_address_tokens": [
+        "birla",
+        "budhkar",
+        "centurion",
+        "level",
+        "marg",
+        "mumbai",
+        "pandurang",
+        "worli"
+      ],
+      "shared_name_tokens": [
+        "best",
+        "limited",
+        "private"
+      ],
+      "shared_numeric_components": [],
+      "source": "S3",
+      "true_candidate_id": "S3-63315307",
+      "why_current_blocker_missed": [
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_address_token",
+        "shared_address_token_pair",
+        "cross_script_overlap",
+        "country_same"
+      ],
+      "candidate_name": "ಗುಡ್ ಲಾಜಿಸ್ಟಿಕ್ಸ್ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "cross-script",
+        "address variation",
+        "weak/no lexical overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "good logistics pvt ltd",
+      "s1_id": "S1-23864941",
+      "shared_address_tokens": [
+        "bangalore",
+        "karnataka",
+        "no"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [],
+      "source": "S2",
+      "true_candidate_id": "S2-198068853",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Names cross scripts; exact/token signatures cannot bridge transliteration."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_sorted_informative_tokens",
+        "shared_core_name_representation",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "twisted hypnosis lp",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "missing address",
+        "legal-form variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "No shared address-token key of length>=2.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name keys are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "twisted hypnosis",
+      "s1_id": "S1-871045468",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "hypnosis",
+        "twisted"
+      ],
+      "shared_numeric_components": [],
+      "source": "S2",
+      "true_candidate_id": "S2-727402517",
+      "why_current_blocker_missed": [
+        "Core-name signal exists, but the capped core-name method did not emit the pair (key cap/frequency or signature mismatch); verify by cap diagnostic.",
+        "Sorted-token signature exists, but the capped sorted-token method did not emit the pair (key cap/frequency or signature mismatch).",
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_address_token",
+        "shared_address_token_pair",
+        "cross_script_overlap",
+        "country_same"
+      ],
+      "candidate_name": "व्हाइट इंजीनियरिंग प्राइवेट लिमिटेड",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "cross-script",
+        "address variation",
+        "weak/no lexical overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "white engineering private limited",
+      "s1_id": "S1-723392558",
+      "shared_address_tokens": [
+        "first",
+        "floor",
+        "maharashtra",
+        "mumbai",
+        "no",
+        "office"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [],
+      "source": "S2",
+      "true_candidate_id": "S2-426001796",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Names cross scripts; exact/token signatures cannot bridge transliteration."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_sorted_informative_tokens",
+        "shared_core_name_representation",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "american council",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "legal-form variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name keys are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures are equal, but the pair is absent, so the key exceeded the global cap.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "american council llc",
+      "s1_id": "S1-334800096",
+      "shared_address_tokens": [
+        "116",
+        "glen",
+        "governors"
+      ],
+      "shared_name_tokens": [
+        "american",
+        "council"
+      ],
+      "shared_numeric_components": [
+        "116"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-901090187",
+      "why_current_blocker_missed": [
+        "Core-name signal exists, but the capped core-name method did not emit the pair (key cap/frequency or signature mismatch); verify by cap diagnostic.",
+        "Sorted-token signature exists, but the capped sorted-token method did not emit the pair (key cap/frequency or signature mismatch).",
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_address_token_pair",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "services company choice",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "spelling/character variation",
+        "partial token overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "No shared numeric-address key of length>=2.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "choice network company",
+      "s1_id": "S1-250667890",
+      "shared_address_tokens": [
+        "avenue",
+        "brooklyn",
+        "center",
+        "mn",
+        "perry"
+      ],
+      "shared_name_tokens": [
+        "choice",
+        "company"
+      ],
+      "shared_numeric_components": [],
+      "source": "S2",
+      "true_candidate_id": "S2-899329873",
+      "why_current_blocker_missed": [
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "cross_script_overlap",
+        "country_same"
+      ],
+      "candidate_name": "जय कंस्ट्रक्शंस प्रा लि",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "cross-script",
+        "address variation",
+        "weak/no lexical overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "jai constructions pvt ltd",
+      "s1_id": "S1-275943177",
+      "shared_address_tokens": [
+        "264",
+        "265",
+        "city",
+        "maharashtra",
+        "mumbai",
+        "plot"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [
+        "264",
+        "265"
+      ],
+      "source": "S2",
+      "true_candidate_id": "S2-903796393",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Names cross scripts; exact/token signatures cannot bridge transliteration."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_address_token",
+        "shared_address_token_pair",
+        "shared_numeric_address_component",
+        "cross_script_overlap",
+        "country_same"
+      ],
+      "candidate_name": "मॉडर्न मैनेजमेंट प्राइवेट लिमिटेड",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "cross-script",
+        "address variation",
+        "weak/no lexical overlap"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "No shared name-token key of length >=5.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "No shared eligible token-pair representation.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "modern management private limited",
+      "s1_id": "S1-206696916",
+      "shared_address_tokens": [
+        "11",
+        "malad",
+        "mumbai",
+        "west"
+      ],
+      "shared_name_tokens": [],
+      "shared_numeric_components": [
+        "11"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-702826531",
+      "why_current_blocker_missed": [
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Names cross scripts; exact/token signatures cannot bridge transliteration."
+      ]
+    },
+    {
+      "address_summary": {
+        "candidate": "dl new delhi south delhi j 9 kailash colony",
+        "s1": "j 9 kailash colony new delhi south delhi delhi"
+      },
+      "available_signals": [
+        "shared_exact_name_token",
+        "shared_name_token_pair",
+        "shared_name_3grams",
+        "shared_name_4grams",
+        "shared_address_token",
+        "shared_numeric_address_component",
+        "country_same",
+        "shared_rare_name_token_unfiltered"
+      ],
+      "candidate_name": "western animal clinic center",
+      "failed_current_methods": [
+        "exact_name / name_country",
+        "exact_address",
+        "rare_name_token",
+        "rare_name_token_pair",
+        "address_token",
+        "numeric_address",
+        "name_core_exact",
+        "name_sorted_tokens"
+      ],
+      "failure_categories": [
+        "address variation",
+        "spelling/character variation"
+      ],
+      "method_failure_diagnosis": [
+        {
+          "failure": "Normalized names are not exactly equal; name_country is only provenance on an exact-name candidate and cannot retrieve this pair on its own.",
+          "method": "exact_name / name_country"
+        },
+        {
+          "failure": "Normalized addresses are not exactly equal.",
+          "method": "exact_address"
+        },
+        {
+          "failure": "A >=5-character shared token exists, but the pair is absent, so shared token key(s) exceeded the global 1,000-pair cap.",
+          "method": "rare_name_token"
+        },
+        {
+          "failure": "A shared length>=3 token-pair key exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "rare_name_token_pair"
+        },
+        {
+          "failure": "A shared address token of length>=2 exists, but the pair is absent, so the shared token key(s) exceeded the global cap.",
+          "method": "address_token"
+        },
+        {
+          "failure": "A shared numeric component of length>=2 exists, but the pair is absent, so the shared key(s) exceeded the global cap.",
+          "method": "numeric_address"
+        },
+        {
+          "failure": "Core-name representations differ or are empty.",
+          "method": "name_core_exact"
+        },
+        {
+          "failure": "Sorted informative-token signatures differ.",
+          "method": "name_sorted_tokens"
+        }
+      ],
+      "name": "western animal hospital clinic",
+      "s1_id": "S1-637291654",
+      "shared_address_tokens": [
+        "calumet"
+      ],
+      "shared_name_tokens": [
+        "animal",
+        "clinic",
+        "western"
+      ],
+      "shared_numeric_components": [
+        "22"
+      ],
+      "source": "S3",
+      "true_candidate_id": "S3-262322252",
+      "why_current_blocker_missed": [
+        "The exact token-pair representation is shared, but the current pair block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "A >=5-character name-token key is shared, but the current rare-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact address-token representation (length >=2) is shared, but the current address-token block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "The exact numeric-address key (length >=2) is shared, but the current numeric block emitted no candidate; the production frequency cap excluded the shared key(s).",
+        "Character 3-gram overlap exists; no character-based method is active."
+      ]
+    }
+  ],
+  "sample": {
+    "diagnostic_proxy_counts": {
+      "missing_normalized_address": 0,
+      "missing_normalized_name": 0,
+      "multiple_ground_truth_matches": 5000,
+      "nonempty_ground_truth": 5000
+    },
+    "diagnostic_size": 5000,
+    "random_representative_size": 20000,
+    "representative_or_enriched": "Enriched; do not treat total sample recall as unbiased full-train estimate.",
+    "sample_id_sha256": "ee0be7be7bf441147e12dc0029a0dce2d182a2e1dd7f0b3fe93af8889c998269",
+    "sample_size": 25000,
+    "selected_id_file": "outputs/metrics/phase2_25k_sample_ids.txt",
+    "selection_method": "20,000 IDs chosen by Python Random(seed) shuffle of sorted full-train S1 IDs; plus 5,000 deterministic diagnostic S1s not in random sample, ranked by multiple GT targets, missing normalized name, missing normalized address, positive GT, then SHA-256 of seed:S1 ID for stable tie-breaking.",
+    "selection_seed": 20260927
+  },
+  "sample_components": {
+    "diagnostic_hard_5k": {
+      "candidate_volume": {
+        "by_method": [
+          {
+            "block_methods": "address_token",
+            "len": 44053
+          },
+          {
+            "block_methods": "exact_address",
+            "len": 1950
+          },
+          {
+            "block_methods": "exact_name",
+            "len": 51022
+          },
+          {
+            "block_methods": "name_core_exact",
+            "len": 17007
+          },
+          {
+            "block_methods": "name_country",
+            "len": 50719
+          },
+          {
+            "block_methods": "name_sorted_tokens",
+            "len": 19333
+          },
+          {
+            "block_methods": "numeric_address",
+            "len": 7029
+          },
+          {
+            "block_methods": "rare_name_token",
+            "len": 17764
+          },
+          {
+            "block_methods": "rare_name_token_pair",
+            "len": 89727
+          }
+        ],
+        "by_source": [
+          {
+            "candidate_source": "S2",
+            "len": 95009
+          },
+          {
+            "candidate_source": "S3",
+            "len": 99366
+          }
+        ],
+        "max_per_s1": 700,
+        "mean_per_s1": 38.875,
+        "median_per_s1": 28.0,
+        "p90_per_s1": 84.0,
+        "p95_per_s1": 106.0,
+        "p99_per_s1": 198.0,
+        "source1_count": 5000,
+        "total_pairs": 194375,
+        "zero_candidate_s1": 26
+      },
+      "recall": {
+        "by_candidate_source": {
+          "S2": {
+            "recall": 0.7608577927000975,
+            "recovered_pairs": 7025,
+            "true_pairs": 9233
+          },
+          "S3": {
+            "recall": 0.7456688154713941,
+            "recovered_pairs": 7403,
+            "true_pairs": 9928
+          }
+        },
+        "candidate_recall": 0.7529878398830959,
+        "positive_s1_recovery": {
+          "fully_recovered_s1": 2563,
+          "fully_recovered_s1_pct": 0.5126,
+          "partially_recovered_s1": 2080,
+          "partially_recovered_s1_pct": 0.416,
+          "positive_s1_count": 5000,
+          "zero_recall_s1": 357,
+          "zero_recall_s1_pct": 0.0714
+        },
+        "recovered_true_pairs": 14428,
+        "singleton_s1_count_excluded_from_recall": 0,
+        "true_pairs": 19161
+      }
+    },
+    "representative_random_20k": {
+      "candidate_volume": {
+        "by_method": [
+          {
+            "block_methods": "address_token",
+            "len": 169511
+          },
+          {
+            "block_methods": "exact_address",
+            "len": 6874
+          },
+          {
+            "block_methods": "exact_name",
+            "len": 196942
+          },
+          {
+            "block_methods": "name_core_exact",
+            "len": 65171
+          },
+          {
+            "block_methods": "name_country",
+            "len": 196356
+          },
+          {
+            "block_methods": "name_sorted_tokens",
+            "len": 75076
+          },
+          {
+            "block_methods": "numeric_address",
+            "len": 28706
+          },
+          {
+            "block_methods": "rare_name_token",
+            "len": 70329
+          },
+          {
+            "block_methods": "rare_name_token_pair",
+            "len": 351501
+          }
+        ],
+        "by_source": [
+          {
+            "candidate_source": "S2",
+            "len": 370935
+          },
+          {
+            "candidate_source": "S3",
+            "len": 386578
+          }
+        ],
+        "max_per_s1": 723,
+        "mean_per_s1": 37.87565,
+        "median_per_s1": 27.0,
+        "p90_per_s1": 83.0,
+        "p95_per_s1": 106.0,
+        "p99_per_s1": 188.0,
+        "source1_count": 20000,
+        "total_pairs": 757513,
+        "zero_candidate_s1": 130
+      },
+      "recall": {
+        "by_candidate_source": {
+          "S2": {
+            "recall": 0.7628341365582063,
+            "recovered_pairs": 25484,
+            "true_pairs": 33407
+          },
+          "S3": {
+            "recall": 0.743122603755632,
+            "recovered_pairs": 26554,
+            "true_pairs": 35733
+          }
+        },
+        "candidate_recall": 0.752646803586925,
+        "positive_s1_recovery": {
+          "fully_recovered_s1": 9923,
+          "fully_recovered_s1_pct": 0.5260284139100933,
+          "partially_recovered_s1": 7415,
+          "partially_recovered_s1_pct": 0.39307675996607294,
+          "positive_s1_count": 18864,
+          "zero_recall_s1": 1526,
+          "zero_recall_s1_pct": 0.08089482612383375
+        },
+        "recovered_true_pairs": 52038,
+        "singleton_s1_count_excluded_from_recall": 1136,
+        "true_pairs": 69140
+      }
+    }
+  },
+  "schema_version": 1,
+  "top_opportunities_by_measured_missed_pair_coverage": [
+    {
+      "missed_pairs_with_signal": 20524,
+      "pct_of_missed": 93.99587817723838,
+      "signal": "shared_address_token_pair"
+    },
+    {
+      "missed_pairs_with_signal": 17444,
+      "pct_of_missed": 79.89008472635676,
+      "signal": "shared_name_3grams"
+    },
+    {
+      "missed_pairs_with_signal": 17280,
+      "pct_of_missed": 79.138997023128,
+      "signal": "shared_name_4grams"
+    },
+    {
+      "missed_pairs_with_signal": 12085,
+      "pct_of_missed": 55.346920082436455,
+      "signal": "shared_rare_name_token_unfiltered"
+    },
+    {
+      "missed_pairs_with_signal": 9801,
+      "pct_of_missed": 44.886649874055415,
+      "signal": "shared_name_token_pair"
+    }
+  ]
+}
