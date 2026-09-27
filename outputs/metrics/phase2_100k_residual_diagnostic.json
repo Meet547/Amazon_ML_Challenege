@@ -1,0 +1,1133 @@
+{
+  "analysis_notes": {
+    "failure_categories": "Mutually exclusive primary labels with precedence: cross-script, missing address, legal-form core equality, abbreviation, informative partial address/numeric overlap, edit ratio >=0.72, token reorder, weak/no lexical overlap, other.",
+    "frequency_caps": "Per-method missed-pair counts overlap. The unique primary failure-mode total counts a miss as cap-related if at least one current key matched but was excluded by its measured frequency/selectivity rule.",
+    "signal_coverage": "Multi-label features; overlaps are expected. Name-token-pair coverage uses the active min-length-3 pair key including legal-form tokens. Address-pair signal means at least two shared tokens after the current generic-address exclusion.",
+    "transliteration": "Unicode script mismatch was measured; no transliteration library was installed, so transliteration pairs were not algorithmically confirmed."
+  },
+  "baseline": {
+    "by_source": {
+      "S2": {
+        "recall": 0.9179635459916721,
+        "recovered_pairs": 153657,
+        "true_pairs": 167389
+      },
+      "S3": {
+        "recall": 0.9119047218530792,
+        "recovered_pairs": 162630,
+        "true_pairs": 178341
+      }
+    },
+    "candidate_volume": {
+      "max": 911,
+      "mean": 52.60514,
+      "median": 43.0,
+      "p90": 106.0,
+      "p95": 135.0,
+      "p99": 218.0,
+      "total": 5260514,
+      "zero_s1": 90
+    },
+    "full_s1": {
+      "fully_recovered_s1": 75202,
+      "fully_recovered_s1_pct": 0.7966988727858293,
+      "partially_recovered_s1": 17354,
+      "partially_recovered_s1_pct": 0.18385032629883888,
+      "positive_s1_count": 94392,
+      "zero_recall_s1": 1836,
+      "zero_recall_s1_pct": 0.019450800915331808
+    },
+    "missed_true_pairs": 29443,
+    "pair_recall": 0.9148381685130015,
+    "pair_recall_s1_cluster_bootstrap_95pct_ci": [
+      0.9135767496924979,
+      0.9161167061803671
+    ],
+    "recovered_true_pairs": 316287,
+    "truth_pairs": 345730
+  },
+  "candidate_generation": {
+    "block_method_cap_profiles": {
+      "address_token": {
+        "blocks_over_1000_records": 7139,
+        "blocks_over_1m_candidate_pairs": 3150,
+        "eligible_estimated_candidate_pairs": 19659369,
+        "eligible_shared_key_count": 397475,
+        "estimated_candidate_pairs_before_dedup": 2022800931,
+        "max_block_size": 2189123,
+        "mean_block_size": 193.8951302357685,
+        "median_block_size": 7.0,
+        "method": "address_token",
+        "p90_block_size": 79.0,
+        "p95_block_size": 228.0,
+        "p99_block_size": 1779.0,
+        "pair_cap": 1000,
+        "record_count": 87843556,
+        "shared_key_count": 440432,
+        "unique_key_count": 742357
+      },
+      "address_token_pair": {
+        "blocks_over_1000_records": 217,
+        "blocks_over_1m_candidate_pairs": 42,
+        "eligible_estimated_candidate_pairs": 63397246,
+        "eligible_shared_key_count": 5582951,
+        "estimated_candidate_pairs_before_dedup": 389760554,
+        "max_block_size": 11014,
+        "mean_block_size": 6.44042802590356,
+        "median_block_size": 4.0,
+        "method": "address_token_pair",
+        "p90_block_size": 10.0,
+        "p95_block_size": 15.0,
+        "p99_block_size": 38.0,
+        "pair_cap": 1000,
+        "record_count": 53636120,
+        "shared_key_count": 5599848,
+        "unique_key_count": 15469757
+      },
+      "exact_address": {
+        "blocks_over_1000_records": 0,
+        "blocks_over_1m_candidate_pairs": 0,
+        "eligible_estimated_candidate_pairs": 769803,
+        "eligible_shared_key_count": 487477,
+        "estimated_candidate_pairs_before_dedup": 769803,
+        "max_block_size": 32,
+        "mean_block_size": 2.4207357475327043,
+        "median_block_size": 2.0,
+        "method": "exact_address",
+        "p90_block_size": 3.0,
+        "p95_block_size": 4.0,
+        "p99_block_size": 7.0,
+        "pair_cap": null,
+        "record_count": 12182157,
+        "shared_key_count": 487477,
+        "unique_key_count": 10490205
+      },
+      "exact_name": {
+        "blocks_over_1000_records": 1,
+        "blocks_over_1m_candidate_pairs": 0,
+        "eligible_estimated_candidate_pairs": 21760611,
+        "eligible_shared_key_count": 904557,
+        "estimated_candidate_pairs_before_dedup": 21760611,
+        "max_block_size": 1043,
+        "mean_block_size": 4.017803189848733,
+        "median_block_size": 2.0,
+        "method": "exact_name",
+        "p90_block_size": 5.0,
+        "p95_block_size": 9.0,
+        "p99_block_size": 33.0,
+        "pair_cap": null,
+        "record_count": 12527040,
+        "shared_key_count": 904557,
+        "unique_key_count": 8277618
+      },
+      "name_address_composite": {
+        "blocks_over_1000_records": 0,
+        "blocks_over_1m_candidate_pairs": 0,
+        "eligible_estimated_candidate_pairs": 27665126,
+        "eligible_shared_key_count": 6245756,
+        "estimated_candidate_pairs_before_dedup": 35613740,
+        "max_block_size": 916,
+        "mean_block_size": 4.460467184608129,
+        "median_block_size": 4.0,
+        "method": "name_address_composite",
+        "p90_block_size": 7.0,
+        "p95_block_size": 8.0,
+        "p99_block_size": 13.0,
+        "pair_cap": 1000,
+        "record_count": 54125073,
+        "shared_key_count": 6247038,
+        "unique_key_count": 24152352
+      },
+      "name_core_exact": {
+        "blocks_over_1000_records": 28,
+        "blocks_over_1m_candidate_pairs": 0,
+        "eligible_estimated_candidate_pairs": 7201651,
+        "eligible_shared_key_count": 1123121,
+        "estimated_candidate_pairs_before_dedup": 80897955,
+        "max_block_size": 1936,
+        "mean_block_size": 5.305575886795655,
+        "median_block_size": 3.0,
+        "method": "name_core_exact",
+        "p90_block_size": 7.0,
+        "p95_block_size": 11.0,
+        "p99_block_size": 35.0,
+        "pair_cap": 1000,
+        "record_count": 12506418,
+        "shared_key_count": 1131264,
+        "unique_key_count": 6421376
+      },
+      "name_sorted_tokens": {
+        "blocks_over_1000_records": 116,
+        "blocks_over_1m_candidate_pairs": 6,
+        "eligible_estimated_candidate_pairs": 8334654,
+        "eligible_shared_key_count": 1090737,
+        "estimated_candidate_pairs_before_dedup": 157195943,
+        "max_block_size": 10157,
+        "mean_block_size": 6.111913807005726,
+        "median_block_size": 3.0,
+        "method": "name_sorted_tokens",
+        "p90_block_size": 8.0,
+        "p95_block_size": 12.0,
+        "p99_block_size": 51.0,
+        "pair_cap": 1000,
+        "record_count": 12506418,
+        "shared_key_count": 1100043,
+        "unique_key_count": 5645012
+      },
+      "numeric_address": {
+        "blocks_over_1000_records": 1693,
+        "blocks_over_1m_candidate_pairs": 757,
+        "eligible_estimated_candidate_pairs": 3083657,
+        "eligible_shared_key_count": 31905,
+        "estimated_candidate_pairs_before_dedup": 320430668,
+        "max_block_size": 173714,
+        "mean_block_size": 326.69819903024705,
+        "median_block_size": 18.0,
+        "method": "numeric_address",
+        "p90_block_size": 352.0,
+        "p95_block_size": 749.0,
+        "p99_block_size": 5014.0,
+        "pair_cap": 1000,
+        "record_count": 14422784,
+        "shared_key_count": 43310,
+        "unique_key_count": 91273
+      },
+      "rare_name_token": {
+        "blocks_over_1000_records": 1981,
+        "blocks_over_1m_candidate_pairs": 997,
+        "eligible_estimated_candidate_pairs": 7783602,
+        "eligible_shared_key_count": 63536,
+        "estimated_candidate_pairs_before_dedup": 63984367,
+        "max_block_size": 1724615,
+        "mean_block_size": 316.90829400689535,
+        "median_block_size": 22.0,
+        "method": "rare_name_token",
+        "p90_block_size": 190.0,
+        "p95_block_size": 327.0,
+        "p99_block_size": 2877.0,
+        "pair_cap": 1000,
+        "record_count": 30810414,
+        "shared_key_count": 81794,
+        "unique_key_count": 1373552
+      },
+      "rare_name_token_pair": {
+        "blocks_over_1000_records": 3274,
+        "blocks_over_1m_candidate_pairs": 1361,
+        "eligible_estimated_candidate_pairs": 50214557,
+        "eligible_shared_key_count": 1873014,
+        "estimated_candidate_pairs_before_dedup": 884800386,
+        "max_block_size": 1145937,
+        "mean_block_size": 21.668255741736548,
+        "median_block_size": 5.0,
+        "method": "rare_name_token_pair",
+        "p90_block_size": 21.0,
+        "p95_block_size": 40.0,
+        "p99_block_size": 222.0,
+        "pair_cap": 1000,
+        "record_count": 55695690,
+        "shared_key_count": 1922502,
+        "unique_key_count": 7770985
+      }
+    },
+    "candidate_schema": [
+      "s1_id",
+      "candidate_id",
+      "candidate_source",
+      "block_methods"
+    ],
+    "method_rows": {
+      "address_token": 892828,
+      "address_token_pair": 2851777,
+      "exact_address": 34854,
+      "exact_name": 991377,
+      "name_address_composite": 1255126,
+      "name_core_exact": 327060,
+      "name_sorted_tokens": 377044,
+      "numeric_address": 138666,
+      "rare_name_token": 355216,
+      "rare_name_token_pair": 2268565
+    }
+  },
+  "frequency_cap_miss_counts": {
+    "address_token": 25309,
+    "address_token_pair": 2025,
+    "address_token_pair_component_frequency": 24457,
+    "name_address_component_frequency": 27788,
+    "name_address_composite": 21,
+    "name_core_exact": 2627,
+    "name_sorted_tokens": 3413,
+    "name_token": 14569,
+    "name_token_pair": 12244,
+    "numeric_address": 17054
+  },
+  "integrity": {
+    "duplicate_pairs": 0,
+    "ground_truth_empty_match_lists": 5608,
+    "ground_truth_rows": 100000,
+    "invalid_candidate_s1": 0,
+    "invalid_candidate_target": 0,
+    "s1_self_pairs": 0,
+    "truth_targets_not_in_s2_s3": 0,
+    "unknown_block_methods": 0
+  },
+  "primary_failure_modes": [
+    {
+      "count": 29192,
+      "failure_mode": "C — constructed key excluded by frequency/selectivity cap",
+      "pct": 99.14750534931902
+    },
+    {
+      "count": 245,
+      "failure_mode": "B — useful signal exists but current blocker does not construct that key",
+      "pct": 0.8321162924973678
+    },
+    {
+      "count": 5,
+      "failure_mode": "E — representation mismatch prevents a current key match",
+      "pct": 0.016981965153007508
+    },
+    {
+      "count": 1,
+      "failure_mode": "A — no measured shared lexical/address signal",
+      "pct": 0.003396393030601501
+    }
+  ],
+  "representative_misses": [
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "no 7 b 5 l s pkt h j c complex sarita vihar new delhi delhi",
+      "candidate_name": "माय सॉफ्टवेयर प्राइवेट लिमिटेड",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true
+      },
+      "failure_category": "cross-script",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "cross-script relation": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true
+      },
+      "s1_address": "no 2 b 5 l s pkt h j c complex sarita vihar new delhi delhi",
+      "s1_id": "S1-232218652",
+      "s1_name": "my software private limited",
+      "shared_address_tokens": [
+        "complex",
+        "delhi",
+        "new",
+        "pkt",
+        "sarita",
+        "vihar"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-364180302"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "i d 59 60 3rd floor lajpat nagar i south delhi delhi",
+      "candidate_name": "govindaagency com",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "numeric_address": true
+      },
+      "failure_category": "abbreviation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "abbreviation": true,
+        "address token pair": true,
+        "likely typo/edit": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared numeric component": true
+      },
+      "s1_address": "i 59 60 3rd floor lajpat nagar i south delhi delhi",
+      "s1_id": "S1-72805487",
+      "s1_name": "govinda agency llp",
+      "shared_address_tokens": [
+        "3rd",
+        "59",
+        "60",
+        "delhi",
+        "lajpat",
+        "nagar",
+        "south"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-520178745"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "38 kolkata howrah wb",
+      "candidate_name": "krishna limited engineering",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "name_core_exact": true,
+        "name_sorted_tokens": true,
+        "name_token": true,
+        "name_token_pair": true,
+        "numeric_address": true
+      },
+      "failure_category": "legal-form variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "core-name overlap": true,
+        "name token reordering": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true,
+        "shared numeric component": true,
+        "shared sorted name tokens": true
+      },
+      "s1_address": "38 kolkata gariahat road south identity flat no 6a kolkata howrah west bengal",
+      "s1_id": "S1-147015169",
+      "s1_name": "krishna engineering limited",
+      "shared_address_tokens": [
+        "38",
+        "howrah",
+        "kolkata"
+      ],
+      "shared_name_tokens": [
+        "engineering",
+        "krishna",
+        "limited"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "shared sorted name tokens",
+      "true_candidate_id": "S3-772296166"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "02 n a gj",
+      "candidate_name": "eastern construction limited services",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true
+      },
+      "failure_category": "spelling/character variation",
+      "flags": {
+        "core-name overlap": true,
+        "likely typo/edit": true,
+        "same country": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true
+      },
+      "s1_address": "shop no 502 the urbania opp hari gold kudasan gandhinagar gandhinagar gandhi nagar gujarat",
+      "s1_id": "S1-46175650",
+      "s1_name": "eastern construction private limited",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "construction",
+        "eastern",
+        "limited"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "shared name token pair",
+      "true_candidate_id": "S3-837228335"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "301 pawtucket blvd lowell massachusetts",
+      "candidate_name": "h 6 secure",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "numeric_address": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "core-name overlap": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared numeric component": true
+      },
+      "s1_address": "301 pawtucket boulevard unit 19 lowell ma",
+      "s1_id": "S1-365476642",
+      "s1_name": "h 6 secure aldabra",
+      "shared_address_tokens": [
+        "301",
+        "lowell",
+        "pawtucket"
+      ],
+      "shared_name_tokens": [
+        "6",
+        "h",
+        "secure"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S3-601832450"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "",
+      "candidate_name": "supreme healthcare llc enterprises",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true
+      },
+      "failure_category": "missing address",
+      "flags": {
+        "core-name overlap": true,
+        "missing address": true,
+        "same country": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true
+      },
+      "s1_address": "1121 stokes street china grove nc",
+      "s1_id": "S1-531214491",
+      "s1_name": "supreme healthcare",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "healthcare",
+        "supreme"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "shared name token pair",
+      "true_candidate_id": "S3-117175002"
+    },
+    {
+      "blocking_failure": "E — representation mismatch prevents a current key match",
+      "candidate_address": "6 lamobt ln hopewell junction new york",
+      "candidate_name": "bfe com",
+      "cap_exclusions": {},
+      "failure_category": "weak/no lexical overlap",
+      "flags": {
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true
+      },
+      "s1_address": "6 lamont lane east fishkill ny",
+      "s1_id": "S1-719022179",
+      "s1_name": "brown fanny e l c s w",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [],
+      "source": "S3",
+      "strongest_shared_signal": "shared address token",
+      "true_candidate_id": "S3-846283898"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "2429 n saint bellevill ecity kansas",
+      "candidate_name": "health all assoociase",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true
+      },
+      "failure_category": "other",
+      "flags": {
+        "core-name overlap": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true
+      },
+      "s1_address": "belleville ks 2606 n street",
+      "s1_id": "S1-442361314",
+      "s1_name": "all health associates",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "all",
+        "health"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "shared name token pair",
+      "true_candidate_id": "S3-380893844"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "",
+      "candidate_name": "north búsiness",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_token": true
+      },
+      "failure_category": "missing address",
+      "flags": {
+        "core-name overlap": true,
+        "likely typo/edit": true,
+        "missing address": true,
+        "same country": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true
+      },
+      "s1_address": "254 danforth street unit apt 4 portland me",
+      "s1_id": "S1-887469993",
+      "s1_name": "north business",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "north"
+      ],
+      "source": "S2",
+      "strongest_shared_signal": "shared name 3-gram",
+      "true_candidate_id": "S2-506539503"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "d 5 road no 20 marol midc andheri e bombay mumbai city महाराष्ट्र",
+      "candidate_name": "ऑल एनर्जी private limited",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true,
+        "numeric_address": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared numeric component": true
+      },
+      "s1_address": "d 5 road no 20 marol midc andheri e mumbai mumbai city maharashtra",
+      "s1_id": "S1-977283582",
+      "s1_name": "all energy private limited",
+      "shared_address_tokens": [
+        "20",
+        "andheri",
+        "city",
+        "marol",
+        "midc",
+        "mumbai"
+      ],
+      "shared_name_tokens": [
+        "limited",
+        "private"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S3-619132895"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "murray rd mount vernon oh",
+      "candidate_name": "nexariatavo",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true
+      },
+      "s1_address": "17477 murray road mount vernon oh",
+      "s1_id": "S1-462995857",
+      "s1_name": "precision realty digital llc",
+      "shared_address_tokens": [
+        "mount",
+        "murray",
+        "oh",
+        "vernon"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-77772638"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "",
+      "candidate_name": "dental cbetr",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_token": true
+      },
+      "failure_category": "missing address",
+      "flags": {
+        "core-name overlap": true,
+        "likely typo/edit": true,
+        "missing address": true,
+        "same country": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true
+      },
+      "s1_address": "unit unit a ny pulaski 4876 jefferson street",
+      "s1_id": "S1-81039642",
+      "s1_name": "dental center",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "dental"
+      ],
+      "source": "S2",
+      "strongest_shared_signal": "shared name 3-gram",
+      "true_candidate_id": "S2-424149031"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "451 park boulevard winston salem north carolina",
+      "candidate_name": "bay srcnool of medicine www baysrcnoo com",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true,
+        "numeric_address": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "core-name overlap": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true,
+        "shared numeric component": true
+      },
+      "s1_address": "451 park boulevard winston salem nc",
+      "s1_id": "S1-872594794",
+      "s1_name": "bay school of medicine",
+      "shared_address_tokens": [
+        "451",
+        "boulevard",
+        "park",
+        "salem",
+        "winston"
+      ],
+      "shared_name_tokens": [
+        "bay",
+        "medicine",
+        "of"
+      ],
+      "source": "S3",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S3-547609399"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "दिल्ली no 153harogvind enclave delhi",
+      "candidate_name": "perfectconsultancyprivate com",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "numeric_address": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "likely typo/edit": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared numeric component": true
+      },
+      "s1_address": "153hargovind enclave delhi east delhi delhi",
+      "s1_id": "S1-307681871",
+      "s1_name": "perfect consultancy private limited",
+      "shared_address_tokens": [
+        "delhi",
+        "enclave"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-107796568"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "",
+      "candidate_name": "ok trust charitable",
+      "cap_exclusions": {
+        "name_address_component_frequency": true,
+        "name_sorted_tokens": true,
+        "name_token": true,
+        "name_token_pair": true
+      },
+      "failure_category": "missing address",
+      "flags": {
+        "core-name overlap": true,
+        "missing address": true,
+        "name token reordering": true,
+        "same country": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true,
+        "shared sorted name tokens": true
+      },
+      "s1_address": "f f bharat nagar new delhi delhi south delhi d 85",
+      "s1_id": "S1-476115916",
+      "s1_name": "ok charitable trust",
+      "shared_address_tokens": [],
+      "shared_name_tokens": [
+        "charitable",
+        "ok",
+        "trust"
+      ],
+      "source": "S2",
+      "strongest_shared_signal": "shared sorted name tokens",
+      "true_candidate_id": "S2-938580673"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "ss sector h l d a colony kanpur road lucknow उत्तर प्रदेश",
+      "candidate_name": "राम फूड",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true
+      },
+      "failure_category": "cross-script",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "cross-script relation": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true
+      },
+      "s1_address": "ss 1795 sector h l d a colony kanpur road lucknow uttar pradesh",
+      "s1_id": "S1-541175380",
+      "s1_name": "ram food",
+      "shared_address_tokens": [
+        "colony",
+        "kanpur",
+        "lucknow",
+        "ss"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-780723015"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "hn 765 c 65 east delhi delhi dl",
+      "candidate_name": "ड्रीम फूड्स प्राइवेट लिमिटेड",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "numeric_address": true
+      },
+      "failure_category": "cross-script",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "cross-script relation": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared numeric component": true
+      },
+      "s1_address": "c 65 delhi east delhi preet vihar",
+      "s1_id": "S1-30562380",
+      "s1_name": "dream foods private limited",
+      "shared_address_tokens": [
+        "65",
+        "delhi",
+        "east"
+      ],
+      "shared_name_tokens": [],
+      "source": "S3",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S3-209266127"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "plot no b3 111 delhi new delhi दिल्ली",
+      "candidate_name": "अर्बन एस्टेट प्राइवेट लिमिटेड",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "numeric_address": true
+      },
+      "failure_category": "cross-script",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "cross-script relation": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared numeric component": true
+      },
+      "s1_address": "plot no 111 blk b pkt 3 sector 17 dwarka ground floor delhi new delhi delhi",
+      "s1_id": "S1-385618695",
+      "s1_name": "urban estate private limited",
+      "shared_address_tokens": [
+        "111",
+        "delhi",
+        "new"
+      ],
+      "shared_name_tokens": [],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-659242277"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "d portion 1st floor blk 9 west delhi dl",
+      "candidate_name": "nilgirisdevelopers",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true
+      },
+      "s1_address": "plot no 51 d portion 1st floor blk 9 new delhi west delhi delhi",
+      "s1_id": "S1-732906340",
+      "s1_name": "nilgiris developers private limited",
+      "shared_address_tokens": [
+        "1st",
+        "blk",
+        "delhi",
+        "portion",
+        "west"
+      ],
+      "shared_name_tokens": [],
+      "source": "S3",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S3-779138033"
+    },
+    {
+      "blocking_failure": "C — constructed key excluded by frequency/selectivity cap",
+      "candidate_address": "nc matthews 7097 1 2 high meadow drive",
+      "candidate_name": "the 8right hair studio",
+      "cap_exclusions": {
+        "address_token": true,
+        "address_token_pair_component_frequency": true,
+        "name_address_component_frequency": true,
+        "name_token": true,
+        "name_token_pair": true,
+        "numeric_address": true
+      },
+      "failure_category": "address variation",
+      "flags": {
+        "2+ shared address tokens": true,
+        "address token pair": true,
+        "core-name overlap": true,
+        "likely typo/edit": true,
+        "partial address overlap": true,
+        "same country": true,
+        "shared address token": true,
+        "shared name 3-gram": true,
+        "shared name 4-gram": true,
+        "shared name token": true,
+        "shared name token pair": true,
+        "shared numeric component": true
+      },
+      "s1_address": "7097 high meadow drive weddington nc",
+      "s1_id": "S1-215221037",
+      "s1_name": "bright hair studio",
+      "shared_address_tokens": [
+        "7097",
+        "drive",
+        "high",
+        "meadow",
+        "nc"
+      ],
+      "shared_name_tokens": [
+        "hair",
+        "studio"
+      ],
+      "source": "S2",
+      "strongest_shared_signal": "address token pair",
+      "true_candidate_id": "S2-273392087"
+    }
+  ],
+  "residual_failure_categories": [
+    {
+      "category": "address variation",
+      "count": 14926,
+      "pct": 50.69456237475801
+    },
+    {
+      "category": "cross-script",
+      "count": 7065,
+      "pct": 23.995516761199607
+    },
+    {
+      "category": "missing address",
+      "count": 4092,
+      "pct": 13.898040281221343
+    },
+    {
+      "category": "legal-form variation",
+      "count": 2107,
+      "pct": 7.156200115477363
+    },
+    {
+      "category": "abbreviation",
+      "count": 1215,
+      "pct": 4.126617532180824
+    },
+    {
+      "category": "spelling/character variation",
+      "count": 27,
+      "pct": 0.09170261182624054
+    },
+    {
+      "category": "other",
+      "count": 10,
+      "pct": 0.033963930306015015
+    },
+    {
+      "category": "weak/no lexical overlap",
+      "count": 1,
+      "pct": 0.003396393030601501
+    }
+  ],
+  "resources": {
+    "disk_free_after_bytes": 8180850688,
+    "disk_free_before_bytes": 8377987072,
+    "large_candidate_artifact_persisted": false,
+    "peak_rss_gib": 5.345,
+    "runtime_seconds": 309.28
+  },
+  "sample": {
+    "ids_file": "outputs/metrics/phase2_100k_sample_ids.txt",
+    "method": "Python random.Random(seed).sample without replacement over sorted full-train S1 IDs; final saved IDs sorted lexicographically",
+    "population_s1": 2206821,
+    "seed": 20260927,
+    "sha256": "8b9000172e2680a37707dd9fd6de9707309d430d14475ec6181bcb3d1dc269db",
+    "size": 100000
+  },
+  "signal_coverage": [
+    {
+      "count": 23722,
+      "pct": 80.5692354719288,
+      "signal": "2+ shared address tokens"
+    },
+    {
+      "count": 23722,
+      "pct": 80.5692354719288,
+      "signal": "address token pair"
+    },
+    {
+      "count": 16402,
+      "pct": 55.70763848792582,
+      "signal": "shared name token"
+    },
+    {
+      "count": 12244,
+      "pct": 41.58543626668478,
+      "signal": "shared name token pair"
+    },
+    {
+      "count": 3413,
+      "pct": 11.591889413442924,
+      "signal": "shared sorted name tokens"
+    },
+    {
+      "count": 15210,
+      "pct": 51.65913799544883,
+      "signal": "core-name overlap"
+    },
+    {
+      "count": 21181,
+      "pct": 71.93900078117039,
+      "signal": "shared name 3-gram"
+    },
+    {
+      "count": 21017,
+      "pct": 71.38199232415175,
+      "signal": "shared name 4-gram"
+    },
+    {
+      "count": 17054,
+      "pct": 57.922086743878005,
+      "signal": "shared numeric component"
+    },
+    {
+      "count": 7065,
+      "pct": 23.995516761199607,
+      "signal": "cross-script relation"
+    },
+    {
+      "count": 1241,
+      "pct": 4.214923750976463,
+      "signal": "abbreviation"
+    },
+    {
+      "count": 15084,
+      "pct": 51.23119247359305,
+      "signal": "likely typo/edit"
+    },
+    {
+      "count": 29443,
+      "pct": 100.0,
+      "signal": "same country"
+    },
+    {
+      "count": 0,
+      "pct": 0.0,
+      "signal": "different country"
+    },
+    {
+      "count": 4092,
+      "pct": 13.898040281221343,
+      "signal": "missing address"
+    }
+  ]
+}
