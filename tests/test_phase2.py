@@ -5,8 +5,10 @@ from src.phase2.candidate_generator import generate_candidates
 from src.phase2.blocks import (
     character_ngram_key_frame,
     core_name_key_frame,
+    name_address_composite_key_frame,
     profile_key_blocks,
     sorted_name_token_key_frame,
+    token_pair_key_frame,
 )
 from src.phase2.deduplicate import write_candidate_tsv
 from src.phase2.evaluate import candidate_volume, contribution_by_method, evaluate_recall
@@ -87,6 +89,17 @@ def test_core_and_sorted_name_signatures_are_secondary_and_order_invariant():
     assert k1 == k2 == "acme␟alpha␟group"
 
 
+def test_address_token_pair_and_name_address_composite_keys_are_deterministic():
+    address = pl.DataFrame(
+        {"entity_id": ["S1-1", "S1-1"], "key": ["oak", "market"]}
+    ).lazy()
+    pairs = token_pair_key_frame(address).collect()
+    assert pairs.to_dicts() == [{"entity_id": "S1-1", "key": "market␟oak"}]
+    names = pl.DataFrame({"entity_id": ["S1-1"], "key": ["acme"]}).lazy()
+    composites = name_address_composite_key_frame(names, address).collect().sort("key")
+    assert composites["key"].to_list() == ["acme␟market", "acme␟oak"]
+
+
 def test_character_key_frequency_cap_excludes_common_buckets():
     left = pl.DataFrame({"entity_id": [f"S1-{i}" for i in range(5)], "key": ["common"] * 5}).lazy()
     right = pl.DataFrame({"entity_id": [f"S2-{i}" for i in range(3)], "key": ["common"] * 3}).lazy()
@@ -116,10 +129,23 @@ def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tm
 
 def test_new_name_pair_and_address_keys_emit_valid_provenance(tmp_path):
     _write_tables(tmp_path / "normalized")
+    source1_path = tmp_path / "normalized" / "train" / "train_source1.parquet"
+    source1 = pl.read_parquet(source1_path).with_columns(
+        pl.when(pl.col("entity_id") == "S1-1")
+        .then(pl.lit("12 oak market"))
+        .otherwise(pl.col("business_address_normalized"))
+        .alias("business_address_normalized"),
+        pl.when(pl.col("entity_id") == "S1-1")
+        .then(pl.lit("12 oak market"))
+        .otherwise(pl.col("business_address"))
+        .alias("business_address"),
+    )
+    source1.write_parquet(source1_path)
     target_path = tmp_path / "normalized" / "train" / "train_source2.parquet"
     additions = pl.DataFrame([
         _entity("S2-4", "group acme", "99 avenue", "us"),
         _entity("S2-5", "unrelated", "building 12 lane", "us"),
+        _entity("S2-6", "acme clinic", "44 oak market square", "us"),
     ], schema=ENTITY_COLUMNS)
     pl.concat([pl.read_parquet(target_path), additions]).write_parquet(target_path)
     tables = load_entity_tables("train", tmp_path / "normalized")
@@ -132,6 +158,8 @@ def test_new_name_pair_and_address_keys_emit_valid_provenance(tmp_path):
     address = pairs.filter((pl.col("s1_id") == "S1-1") & (pl.col("candidate_id") == "S2-5"))
     assert address.height == 1
     assert {"address_token", "numeric_address"}.issubset(set(address["block_methods"].item()))
+    targeted = pairs.filter((pl.col("s1_id") == "S1-1") & (pl.col("candidate_id") == "S2-6"))
+    assert {"address_token_pair", "name_address_composite"}.issubset(set(targeted["block_methods"].item()))
 
 
 def test_candidate_tsv_contract_and_volume_includes_zero_candidates(tmp_path):
@@ -163,7 +191,7 @@ def test_ground_truth_recall_excludes_singletons_and_reports_partial_recovery(tm
     assert result["positive_s1_recovery"]["partially_recovered_s1"] == 1
     assert result["singleton_s1_count_excluded_from_recall"] == 1
     stages = contribution_by_method(pairs, labels)["cumulative"]
-    assert len(stages) == 9
+    assert len(stages) == 11
     assert stages[0]["candidate_recall"] == 2 / 3
     assert stages[1]["candidate_recall"] == 2 / 3
 

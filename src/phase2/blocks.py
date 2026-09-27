@@ -10,6 +10,13 @@ LEGAL_FORM_TOKENS = [
     "gmbh", "sarl", "sa", "bv", "nv",
 ]
 
+GENERIC_ADDRESS_TOKENS = [
+    "road", "street", "st", "rd", "avenue", "ave", "lane", "ln",
+    "floor", "fl", "suite", "unit", "building", "bldg", "apartment",
+    "apt", "near", "opposite", "opp", "plot", "sector", "main",
+    "cross", "phase", "block", "no", "number", "india",
+]
+
 
 def source2_and_source3(tables) -> pl.LazyFrame:
     """Combine target sources while carrying explicit S2/S3 identity."""
@@ -88,6 +95,37 @@ def address_token_key_frame(frame: pl.LazyFrame, id_column: str, min_length: int
         .explode("key", empty_as_null=True)
         .filter(pl.col("key").str.len_chars() >= min_length)
         .select("entity_id", "key")
+    )
+
+
+def token_pair_key_frame(token_keys: pl.LazyFrame) -> pl.LazyFrame:
+    """Create deterministic unordered token pairs per entity without Python comparisons."""
+    first = token_keys.select("entity_id", pl.col("key").alias("token_a"))
+    second = token_keys.select("entity_id", pl.col("key").alias("token_b"))
+    return (
+        first.join(second, on="entity_id", how="inner")
+        .filter(pl.col("token_a") < pl.col("token_b"))
+        .select(
+            "entity_id",
+            pl.concat_str(["token_a", "token_b"], separator="␟").alias("key"),
+        )
+    )
+
+
+def name_address_composite_key_frame(
+    name_tokens: pl.LazyFrame, address_tokens: pl.LazyFrame,
+) -> pl.LazyFrame:
+    """Combine each informative name token and address token for an entity."""
+    return (
+        name_tokens.select("entity_id", pl.col("key").alias("name_key"))
+        .join(
+            address_tokens.select("entity_id", pl.col("key").alias("address_key")),
+            on="entity_id", how="inner",
+        )
+        .select(
+            "entity_id",
+            pl.concat_str(["name_key", "address_key"], separator="␟").alias("key"),
+        )
     )
 
 

@@ -14,9 +14,12 @@ separate and uses lazy Polars scans.
 | `name_country` | normalized name and country | Recorded as provenance when an exact-name pair also has equal country. Since it is a strict subset of exact-name pairs, it does not trigger a second candidate join. |
 | `exact_address` | `business_address_normalized` | Exact non-empty values. |
 | `rare_name_token` | unique tokens of normalized names | Tokens of at least five characters; retain a shared token only if S1 frequency × combined S2/S3 frequency is at most 1,000. |
+| `address_token_pair` | unordered pairs of informative address tokens | Exclude generic address words; discard tokens appearing in more than 10,000 records per side; retain shared token-pair keys whose cross-side product is at most 1,000. |
+| `name_address_composite` | informative name token + informative address token | Exclude legal-form name tokens and generic address words; discard component tokens appearing in more than 10,000 records per side; cap each composite key at 1,000 estimated pairs. |
 
-The token policy is measured, frequency-based common-key suppression, not a
-fixed stopword list. On the current normalized data, exact-name blocks have
+Name-token common-key suppression is based on measured frequencies. Address
+recovery also excludes a small explicit list of generic address words. On the
+current normalized data, exact-name blocks have
 about 904.6k shared keys, 21.76M estimated raw pairs, median size 2, P90 5,
 P95 9, P99 33, maximum 1,043 records. Exact-address blocks have about 487.5k
 shared keys, 0.77M estimated pairs, median size 2, P90 3, P95 4, P99 7,
@@ -30,6 +33,12 @@ All methods are unioned then deduplicated on `(s1_id, candidate_id,
 candidate_source)`. The internal Parquet schema is `s1_id`, `candidate_id`,
 `candidate_source`, `block_methods` (`List[String]`). Candidate source is
 carried explicitly from S2/S3 inputs. Empty normalized keys never block.
+
+Address recovery policies were selected on a fixed 25K S1 diagnostic sample
+against full train S2/S3. Address-token pairs materially improved recall, and
+name-address composites added further recovery at a smaller incremental
+volume. Ground truth was used only for evaluation; it is never used to select
+keys or S1s at inference time.
 
 ## Evaluation and outputs
 
