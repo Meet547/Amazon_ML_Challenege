@@ -1,0 +1,22 @@
+{
+  "schema": {
+    "s1_id": "VARCHAR",
+    "candidate_id": "VARCHAR",
+    "candidate_source": "VARCHAR",
+    "block_methods": "VARCHAR[]"
+  },
+  "methods": [
+    "address_token",
+    "address_token_pair",
+    "exact_address",
+    "exact_name",
+    "name_address_composite",
+    "name_core_exact",
+    "name_country",
+    "name_sorted_tokens",
+    "numeric_address",
+    "rare_name_token",
+    "rare_name_token_pair"
+  ],
+  "empty_provenance_rows": 0
+}

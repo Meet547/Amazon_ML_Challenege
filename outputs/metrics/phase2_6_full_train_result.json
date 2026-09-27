@@ -1,0 +1,39 @@
+{
+  "candidate_pairs": 222529211,
+  "unique_s1_with_candidates": 2206444,
+  "unique_candidate_ids": 9895733,
+  "duplicate_pairs": 0,
+  "duplicate_pair_check": "output constructed by 64-way hash partition; every partition grouped on (s1_id,candidate_id,candidate_source)",
+  "candidates_per_s1": {
+    "mean": 100.85423015494615,
+    "median": 73.0,
+    "p95": 284.0,
+    "p99": 470.0,
+    "max": 3396
+  },
+  "truth_pairs": 7638365,
+  "recovered_pairs": 7262049,
+  "pair_recall": 0.9507334357549031,
+  "by_source": {
+    "S2": {
+      "truth_pairs": 3693619,
+      "recovered_pairs": 3517980,
+      "recall": 0.9524479920641518
+    },
+    "S3": {
+      "truth_pairs": 3944746,
+      "recovered_pairs": 3744069,
+      "recall": 0.949128030042999
+    }
+  },
+  "full_s1_recall": {
+    "recovered": 1806483,
+    "positive_s1": 2083574,
+    "recall": 0.8670116828104018
+  },
+  "invalid_prefix_or_source_rows": 0,
+  "runtime_seconds": 194.18,
+  "peak_memory_gib": 1.19256591796875,
+  "artifact_bytes": 2667796160,
+  "disk_free_bytes": 5853618176
+}

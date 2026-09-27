@@ -113,6 +113,10 @@ def test_blocking_deduplicates_and_preserves_provenance_without_s1_candidates(tm
     _write_tables(tmp_path / "normalized")
     tables = load_entity_tables("train", tmp_path / "normalized")
     generation = generate_candidates(tables, token_pair_cap=1)
+    assert generation.configuration["address_token_pair_token_frequency_cap_per_side"] == 25_000
+    assert generation.configuration["address_token_pair_max_pair_estimate"] == 5_000
+    assert generation.configuration["name_address_composite_token_frequency_cap_per_side"] == 25_000
+    assert generation.configuration["name_address_composite_max_pair_estimate"] == 1_000
     pairs = generation.pairs.sort("s1_id", "candidate_id").collect()
     assert pairs.select("s1_id", "candidate_id").n_unique() == pairs.height
     assert set(pairs["candidate_source"].to_list()) == {"S2", "S3"}

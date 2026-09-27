@@ -1,0 +1,204 @@
+{
+  "sample_sha256": "8b9000172e2680a37707dd9fd6de9707309d430d14475ec6181bcb3d1dc269db",
+  "sample_size": 100000,
+  "experiments": {
+    "baseline": {
+      "candidate_count": 5260514,
+      "pair_recall": 0.9148381685130015,
+      "S2_recall": 0.9179635459916721,
+      "S3_recall": 0.9119047218530792,
+      "full_s1_recall": 0.7966988727858293,
+      "mean_candidates_per_s1": 52.60514,
+      "P95": 135,
+      "P99": 218,
+      "runtime_seconds": null,
+      "peak_memory_gib": null,
+      "status": "verified_cached",
+      "configuration": "existing Phase 2 baseline"
+    },
+    "address_pair_cap1000": {
+      "candidate_count": 6646799,
+      "pair_recall": 0.9397043936019437,
+      "S2_recall": 0.9431922049836011,
+      "S3_recall": 0.9364307702659512,
+      "full_s1_recall": 0.8455483515552166,
+      "mean_candidates_per_s1": 66.46799,
+      "P95": 174.0,
+      "P99": 271.0,
+      "max": 1405,
+      "runtime_seconds": 183.87,
+      "peak_memory_gib": 6.52,
+      "status": "complete",
+      "configuration": {
+        "method": "address_token_pair",
+        "component_frequency_ceiling": 25000,
+        "joint_pair_cap": 1000
+      },
+      "newly_recovered_vs_parent": 8597,
+      "added_candidate_pairs": 1386285,
+      "total_recovered_true_pairs": 324884,
+      "remaining_missed_pairs": 20846
+    },
+    "address_pair_cap2500": {
+      "candidate_count": 7676786,
+      "pair_recall": 0.9418014057212275,
+      "S2_recall": 0.9453249616163547,
+      "S3_recall": 0.9384942329582092,
+      "full_s1_recall": 0.8496376811594203,
+      "mean_candidates_per_s1": 76.76786,
+      "P95": 214.0,
+      "P99": 343.0,
+      "max": 2323,
+      "runtime_seconds": 225.26,
+      "peak_memory_gib": 6.85,
+      "status": "complete",
+      "configuration": {
+        "method": "address_token_pair",
+        "component_frequency_ceiling": 25000,
+        "joint_pair_cap": 2500
+      },
+      "newly_recovered_vs_parent": 725,
+      "added_candidate_pairs": 1029987,
+      "total_recovered_true_pairs": 325609,
+      "remaining_missed_pairs": 20121
+    },
+    "address_pair_cap5000": {
+      "candidate_count": 8591532,
+      "pair_recall": 0.9429699476470078,
+      "S2_recall": 0.946489912718279,
+      "S3_recall": 0.939666145193758,
+      "full_s1_recall": 0.8519471989151624,
+      "mean_candidates_per_s1": 85.91532,
+      "P95": 253.0,
+      "P99": 426.0,
+      "max": 3241,
+      "runtime_seconds": 265.1,
+      "peak_memory_gib": 6.85,
+      "status": "complete",
+      "configuration": {
+        "method": "address_token_pair",
+        "component_frequency_ceiling": 25000,
+        "joint_pair_cap": 5000
+      },
+      "newly_recovered_vs_parent": 404,
+      "added_candidate_pairs": 914746,
+      "total_recovered_true_pairs": 326013,
+      "remaining_missed_pairs": 19717
+    },
+    "name_address_cap1000": {
+      "candidate_count": 10039113,
+      "pair_recall": 0.9507650478697249,
+      "S2_recall": 0.9522668753621804,
+      "S3_recall": 0.9493554482704482,
+      "full_s1_recall": 0.866567081956098,
+      "mean_candidates_per_s1": 100.39113,
+      "P95": 281.0,
+      "P99": 467.0,
+      "max": 3286,
+      "runtime_seconds": 278.94,
+      "peak_memory_gib": 6.85,
+      "status": "complete",
+      "configuration": {
+        "method": "name_address_composite",
+        "component_frequency_ceiling": 25000,
+        "joint_pair_cap": 1000
+      },
+      "newly_recovered_vs_parent": 2695,
+      "added_candidate_pairs": 1447581,
+      "total_recovered_true_pairs": 328708,
+      "remaining_missed_pairs": 17022
+    }
+  },
+  "holdout": {
+    "holdout_sample_sha256": "d85426dcefbf19650375bb63d3988e9491d07b1a786765e55863be098baa0e48",
+    "holdout_size": 100000,
+    "dev_overlap": 0,
+    "truth_pairs": 345914,
+    "recovered_pairs": 328813,
+    "pair_recall": 0.950562856663795,
+    "by_source": {
+      "S2": {
+        "truth": 167027,
+        "recovered": 159124,
+        "recall": 0.9526842965508571
+      },
+      "S3": {
+        "truth": 178887,
+        "recovered": 169689,
+        "recall": 0.9485820657733653
+      }
+    },
+    "full_s1_recall": 0.8664710120359383,
+    "positive_s1": 94384,
+    "candidate_pairs": 10145238,
+    "candidate_count": 10145238,
+    "mean": 101.45238,
+    "p95": 285.0,
+    "p99": 479.0,
+    "max": 1549,
+    "zero": 10,
+    "runtime_seconds": 480.14,
+    "peak_memory_gib": 7.45,
+    "configuration": {
+      "address_pair_component_df": 25000,
+      "address_pair_joint_cap": 5000,
+      "name_address_component_df": 25000,
+      "name_address_joint_cap": 1000
+    }
+  },
+  "full_train": {
+    "candidate_pairs": 222529211,
+    "unique_s1_with_candidates": 2206444,
+    "unique_candidate_ids": 9895733,
+    "duplicate_pairs": 0,
+    "duplicate_pair_check": "output constructed by 64-way hash partition; every partition grouped on (s1_id,candidate_id,candidate_source)",
+    "candidates_per_s1": {
+      "mean": 100.85423015494615,
+      "median": 73.0,
+      "p95": 284.0,
+      "p99": 470.0,
+      "max": 3396
+    },
+    "truth_pairs": 7638365,
+    "recovered_pairs": 7262049,
+    "pair_recall": 0.9507334357549031,
+    "by_source": {
+      "S2": {
+        "truth_pairs": 3693619,
+        "recovered_pairs": 3517980,
+        "recall": 0.9524479920641518
+      },
+      "S3": {
+        "truth_pairs": 3944746,
+        "recovered_pairs": 3744069,
+        "recall": 0.949128030042999
+      }
+    },
+    "full_s1_recall": {
+      "recovered": 1806483,
+      "positive_s1": 2083574,
+      "recall": 0.8670116828104018
+    },
+    "invalid_prefix_or_source_rows": 0,
+    "runtime_seconds": 194.18,
+    "peak_memory_gib": 1.19256591796875,
+    "artifact_bytes": 2667796160,
+    "disk_free_bytes": 5853618176
+  },
+  "reproducibility": {
+    "status": "deterministic_metrics_reproduced",
+    "evidence": "Baseline and all address-pair tiers reproduced exactly in two independent experiment runners; name-address 1,000 tier also reproduced exact candidate/recall metrics. Holdout and full-train artifacts were run once."
+  },
+  "recovered_runner_failures": [
+    {
+      "attempt": "initial checkpoint runner",
+      "issue": "Polars DataFrame/LazyFrame join API mismatch prevented metric checkpoint after generating candidate union",
+      "resolution": "materialized both join inputs; resume retried from cached candidate union"
+    },
+    {
+      "attempt": "first full-train streaming merge",
+      "issue": "external cleanup removed source blocks before DuckDB finished initial partition copy",
+      "resolution": "reran; changed merge to remove source and raw partition files only after downstream copy completed"
+    }
+  ]
+}

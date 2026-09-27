@@ -1,0 +1,11 @@
+{
+  "candidate_s1_absent": 0,
+  "candidate_target_absent": 0,
+  "candidate_source_mismatch": 0,
+  "gt_malformed_lists": 0,
+  "gt_s1_absent": 0,
+  "gt_target_absent": 0,
+  "gt_invalid_target_prefix_rows": 0,
+  "gt_duplicate_pairs": 0,
+  "candidate_pair_duplicates_reconstructed": 0
+}

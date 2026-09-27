@@ -1,0 +1,37 @@
+{
+  "holdout_sample_sha256": "d85426dcefbf19650375bb63d3988e9491d07b1a786765e55863be098baa0e48",
+  "holdout_size": 100000,
+  "dev_overlap": 0,
+  "truth_pairs": 345914,
+  "recovered_pairs": 328813,
+  "pair_recall": 0.950562856663795,
+  "by_source": {
+    "S2": {
+      "truth": 167027,
+      "recovered": 159124,
+      "recall": 0.9526842965508571
+    },
+    "S3": {
+      "truth": 178887,
+      "recovered": 169689,
+      "recall": 0.9485820657733653
+    }
+  },
+  "full_s1_recall": 0.8664710120359383,
+  "positive_s1": 94384,
+  "candidate_pairs": 10145238,
+  "candidate_count": 10145238,
+  "mean": 101.45238,
+  "p95": 285.0,
+  "p99": 479.0,
+  "max": 1549,
+  "zero": 10,
+  "runtime_seconds": 480.14,
+  "peak_memory_gib": 7.45,
+  "configuration": {
+    "address_pair_component_df": 25000,
+    "address_pair_joint_cap": 5000,
+    "name_address_component_df": 25000,
+    "name_address_joint_cap": 1000
+  }
+}

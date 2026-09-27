@@ -32,7 +32,10 @@ METHODS = (
     "name_core_exact", "name_sorted_tokens",
 )
 
-TOKEN_FREQUENCY_CAP = 10_000
+ADDRESS_PAIR_COMPONENT_FREQUENCY_CAP = 25_000
+ADDRESS_PAIR_JOINT_ESTIMATE_CAP = 5_000
+NAME_ADDRESS_COMPONENT_FREQUENCY_CAP = 25_000
+NAME_ADDRESS_JOINT_ESTIMATE_CAP = 1_000
 
 
 def _cap_token_frequency(keys: pl.LazyFrame, max_frequency: int) -> pl.LazyFrame:
@@ -184,17 +187,18 @@ def generate_candidates(
     address_token_left = _cap_token_frequency(
         address_token_key_frame(s1, "s1_id", min_length=2).filter(
             ~pl.col("key").is_in(GENERIC_ADDRESS_TOKENS)
-        ), TOKEN_FREQUENCY_CAP,
+        ), ADDRESS_PAIR_COMPONENT_FREQUENCY_CAP,
     )
     address_token_right = _cap_token_frequency(
         address_token_key_frame(targets, "candidate_id", min_length=2).filter(
             ~pl.col("key").is_in(GENERIC_ADDRESS_TOKENS)
-        ), TOKEN_FREQUENCY_CAP,
+        ), ADDRESS_PAIR_COMPONENT_FREQUENCY_CAP,
     )
     left_address_pairs = token_pair_key_frame(address_token_left)
     right_address_pairs = token_pair_key_frame(address_token_right)
     shared_address_pairs, blocks["address_token_pair"] = profile_key_blocks(
-        "address_token_pair", left_address_pairs, right_address_pairs, pair_cap=1_000,
+        "address_token_pair", left_address_pairs, right_address_pairs,
+        pair_cap=ADDRESS_PAIR_JOINT_ESTIMATE_CAP,
     )
 
     # Name-address composites are selective because both component tokens are
@@ -202,17 +206,18 @@ def generate_candidates(
     name_composite_left = _cap_token_frequency(
         token_key_frame(s1, "s1_id", "country_normalized", min_length=3).filter(
             ~pl.col("key").is_in(LEGAL_FORM_TOKENS)
-        ), TOKEN_FREQUENCY_CAP,
+        ), NAME_ADDRESS_COMPONENT_FREQUENCY_CAP,
     )
     name_composite_right = _cap_token_frequency(
         token_key_frame(targets, "candidate_id", "country_normalized", min_length=3).filter(
             ~pl.col("key").is_in(LEGAL_FORM_TOKENS)
-        ), TOKEN_FREQUENCY_CAP,
+        ), NAME_ADDRESS_COMPONENT_FREQUENCY_CAP,
     )
     composite_left = name_address_composite_key_frame(name_composite_left, address_token_left)
     composite_right = name_address_composite_key_frame(name_composite_right, address_token_right)
     shared_name_address, blocks["name_address_composite"] = profile_key_blocks(
-        "name_address_composite", composite_left, composite_right, pair_cap=1_000,
+        "name_address_composite", composite_left, composite_right,
+        pair_cap=NAME_ADDRESS_JOINT_ESTIMATE_CAP,
     )
 
     left_numeric_address = numeric_address_key_frame(s1, "s1_id", min_length=2)
@@ -247,11 +252,13 @@ def generate_candidates(
         ),
         "address_token_pair": _key_pairs(
             left_address_pairs,
-            right_address_pairs, shared_address_pairs, targets, "address_token_pair", 1_000,
+            right_address_pairs, shared_address_pairs, targets, "address_token_pair",
+            ADDRESS_PAIR_JOINT_ESTIMATE_CAP,
         ),
         "name_address_composite": _key_pairs(
             composite_left,
-            composite_right, shared_name_address, targets, "name_address_composite", 1_000,
+            composite_right, shared_name_address, targets, "name_address_composite",
+            NAME_ADDRESS_JOINT_ESTIMATE_CAP,
         ),
         "numeric_address": _key_pairs(
             left_numeric_address, right_numeric_address, shared_numeric_address, targets, "numeric_address", 1_000,
@@ -278,11 +285,11 @@ def generate_candidates(
         "name_token_pair_max_pair_estimate": 1_000,
         "address_token_min_length": 2,
         "address_token_max_pair_estimate": 1_000,
-        "address_token_pair_token_frequency_cap_per_side": TOKEN_FREQUENCY_CAP,
+        "address_token_pair_token_frequency_cap_per_side": ADDRESS_PAIR_COMPONENT_FREQUENCY_CAP,
         "address_token_pair_generic_tokens_excluded": GENERIC_ADDRESS_TOKENS,
-        "address_token_pair_max_pair_estimate": 1_000,
-        "name_address_composite_token_frequency_cap_per_side": TOKEN_FREQUENCY_CAP,
-        "name_address_composite_max_pair_estimate": 1_000,
+        "address_token_pair_max_pair_estimate": ADDRESS_PAIR_JOINT_ESTIMATE_CAP,
+        "name_address_composite_token_frequency_cap_per_side": NAME_ADDRESS_COMPONENT_FREQUENCY_CAP,
+        "name_address_composite_max_pair_estimate": NAME_ADDRESS_JOINT_ESTIMATE_CAP,
         "numeric_address_min_length": 2,
         "numeric_address_max_pair_estimate": 1_000,
         "name_core_max_pair_estimate": 1_000,
